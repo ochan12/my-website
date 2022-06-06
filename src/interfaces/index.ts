@@ -20,6 +20,7 @@ export interface Resource {
   name: string;
   logo: string;
   url: string;
+  _id: string
 }
 
 interface Project {
@@ -43,4 +44,9 @@ export interface LifeStep {
   place: Place;
   projects: Project[];
   userId: string;
+}
+
+export interface Skill {
+  name: string;
+  experience: number;
 }
