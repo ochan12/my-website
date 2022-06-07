@@ -14,7 +14,6 @@ import { Skill, Resource } from "interfaces";
 type ResourceMap = { [k: string]: Resource };
 
 function SkillItem(skill: Skill, resourcesMap: ResourceMap) {
-  console.log({ skill, resourcesMap });
   return (
     <ListItem key={skill.name}>
       <ListItemAvatar>
@@ -23,7 +22,10 @@ function SkillItem(skill: Skill, resourcesMap: ResourceMap) {
             style: {
               objectFit: "contain",
             },
+            alt: resourcesMap[skill.name]?.name,
+            title: resourcesMap[skill.name]?.name,
           }}
+          title={resourcesMap[skill.name]?.name}
           alt={skill.name}
           src={resourcesMap[skill.name]?.logo}
         />
@@ -49,7 +51,7 @@ export default function SkillCard({
   title: string;
 }) {
   return (
-    <Card>
+    <Card elevation={0} className="border-stone-200 border-solid border-2">
       <CardHeader title={title} />
       <CardContent>
         <List>{skills?.map((skill) => SkillItem(skill, resourcesMap))}</List>

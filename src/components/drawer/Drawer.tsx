@@ -63,7 +63,13 @@ export default function AppDrawer() {
     <>
       <Drawer variant="permanent">
         <DrawerHeader>
-          <Grid container justifyContent={"center"} columnSpacing={2} padding={1} alignItems="center">
+          <Grid
+            container
+            justifyContent={"center"}
+            columnSpacing={2}
+            padding={1}
+            alignItems="center"
+          >
             <Grid item>{"<>"}</Grid>
             <Grid item>Mateo</Grid>
             <Grid item>{"</>"}</Grid>
@@ -72,14 +78,14 @@ export default function AppDrawer() {
         <Divider />
         <List>
           {drawerItems.map((item) => (
-            <ListItem key={item.title}>
-              <ListItemButton>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText>
-                  <Link href={item.href}>{item.title}</Link>
-                </ListItemText>
-              </ListItemButton>
-            </ListItem>
+            <Link href={item.href} key={item.title}>
+              <ListItem>
+                <ListItemButton>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText>{item.title}</ListItemText>
+                </ListItemButton>
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>
