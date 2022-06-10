@@ -2,8 +2,6 @@ import {
   CasesOutlined,
   Code,
   FlightTakeoffOutlined,
-  Home,
-  HomeMaxOutlined,
   HomeOutlined,
 } from "@mui/icons-material";
 import {
@@ -11,7 +9,6 @@ import {
   Divider,
   Drawer,
   Grid,
-  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -56,23 +53,18 @@ function useDrawerItems(): DrawerItem[] {
 }
 
 export default function AppDrawer() {
-  const [open, setOpen] = useState(false);
-  const handleOpenBar = () => setOpen(!open);
   const drawerItems = useDrawerItems();
   return (
     <>
-      <Drawer variant="permanent">
+      <Drawer variant="permanent" elevation={0}>
         <DrawerHeader>
           <Grid
             container
             justifyContent={"center"}
-            columnSpacing={2}
-            padding={1}
             alignItems="center"
+            className="m-0 p-6"
           >
-            <Grid item>{"<>"}</Grid>
-            <Grid item>Mateo</Grid>
-            <Grid item>{"</>"}</Grid>
+            <code>{"<> Mateo </>"}</code>
           </Grid>
         </DrawerHeader>
         <Divider />
@@ -82,7 +74,9 @@ export default function AppDrawer() {
               <ListItem>
                 <ListItemButton>
                   <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText>{item.title}</ListItemText>
+                  <ListItemText>
+                    <code>{item.title}</code>
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
             </Link>

@@ -18,12 +18,17 @@ export function JobStep({ step }: { step: LifeStep }) {
       endDate: new Date(step.endTime),
     }
   );
+
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+  };
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardHeader
         title={step.name}
-        subheader={`${startDate.toDateString()} - ${
-          step.endTime ? endDate.toDateString() : "Still here!"
+        subheader={`${startDate.toLocaleString("en-GB", dateOptions)} - ${
+          step.endTime ? endDate.toLocaleString("en-GB", dateOptions) : "Still here!"
         }`}
         avatar={
           step.photos?.[0] ? (
