@@ -14,6 +14,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
@@ -35,7 +37,7 @@ function useDrawerItems(): DrawerItem[] {
       icon: <HomeOutlined fontSize="small" />,
     },
     {
-      title: "Experience",
+      title: "Jobs",
       href: "/experience",
       icon: <CasesOutlined fontSize="small" />,
     },
@@ -54,35 +56,44 @@ function useDrawerItems(): DrawerItem[] {
 
 export default function AppDrawer() {
   const drawerItems = useDrawerItems();
+  const theme = useTheme();
+  const upToMedium = useMediaQuery(theme.breakpoints.up("md"));
   return (
-    <>
-      <Drawer variant="permanent" elevation={0}>
-        <DrawerHeader>
-          <Grid
-            container
-            justifyContent={"center"}
-            alignItems="center"
-            className="m-0 p-6"
-          >
-            <code>{"<> Mateo </>"}</code>
-          </Grid>
-        </DrawerHeader>
+    <Grid container className="border-r-0" flexDirection={"column"}>
+      <Grid
+        container
+        alignItems="center"
+        justifyContent={"center"}
+        className="m-0 p-2 text-ellipsis"
+      >
+        {upToMedium ? <code>{"< Mateo />"}</code> : <code>{"< M />"}</code>}
+      </Grid>
+      <Grid item>
         <Divider />
+      </Grid>
+      <Grid item>
         <List>
           {drawerItems.map((item) => (
-            <Link href={item.href} key={item.title}>
-              <ListItem>
-                <ListItemButton>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText>
-                    <code>{item.title}</code>
-                  </ListItemText>
+            <Link
+              href={item.href}
+              key={item.title}
+            >
+              <ListItem disablePadding >
+                <ListItemButton sx={{ justifyContent: "center" }}>
+                  <ListItemIcon sx={{ justifyContent: "center" }}>
+                    {item.icon}
+                  </ListItemIcon>
+                  {upToMedium && (
+                    <ListItemText>
+                      <code>{item.title}</code>
+                    </ListItemText>
+                  )}
                 </ListItemButton>
               </ListItem>
             </Link>
           ))}
         </List>
-      </Drawer>
-    </>
+      </Grid>
+    </Grid>
   );
 }

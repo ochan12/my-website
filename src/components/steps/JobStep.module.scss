@@ -9,3 +9,16 @@
     background-color: rgb(15, 128, 185) !important;
   }
 }
+
+.card-background {
+  &--cruncho {
+    background-color: rgba(236, 75, 68, 0.2) !important;
+  }
+  &--reputación_digital {
+    background-color: rgba(16, 89, 118, 0.2) !important;
+  }
+  &--qbit {
+    background-color: rgba(15, 128, 185, 0.2) !important;
+  }
+}
+

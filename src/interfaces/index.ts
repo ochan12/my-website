@@ -23,10 +23,10 @@ export interface Resource {
   _id: string
 }
 
-interface Project {
+export interface Project {
   name: string;
   description: string;
-  resources: string;
+  resources: string[];
   startTime: number;
   endTime: number;
   company: string;

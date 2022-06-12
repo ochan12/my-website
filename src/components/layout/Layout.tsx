@@ -23,13 +23,11 @@ export default function Layout({ children, home }: any) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <Grid container direction={"row"}>
+      <Grid container justifyContent={"space-between"}>
         <Grid item xs={2}>
           <AppDrawer />
         </Grid>
-        <Grid item xs={10}>
-          {children}
-        </Grid>
+        <Grid xs={10}>{children}</Grid>
       </Grid>
     </div>
   );
