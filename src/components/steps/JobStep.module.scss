@@ -22,3 +22,32 @@
   }
 }
 
+.headerStepper {
+  &--cruncho {
+    background-color: rgba(236, 75, 68, 0.2) !important;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    &:hover {
+      border-color: rgba(236, 75, 68, 0.5) !important;
+    }
+  }
+  &--reputación_digital {
+    background-color: rgba(16, 89, 118, 0.2) !important;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    &:hover {
+      border-color: rgba(16, 89, 118, 0.5) !important;
+    }
+  }
+  &--qbit {
+    background-color: rgba(15, 128, 185, 0.2) !important;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    &:hover {
+      border-color: rgba(15, 128, 185, 0.5) !important;
+    }
+  }
+}

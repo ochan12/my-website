@@ -1,3 +1,4 @@
+import { Margin } from "@mui/icons-material";
 import {
   Avatar,
   Card,
@@ -34,7 +35,7 @@ export function JobStep({ step }: { step: LifeStep }) {
   );
 
   return (
-    <Card className={style[`card-background--${stepStylePrefix}`]}>
+    <Card className={style[`card-background--${stepStylePrefix}`]} elevation={0}>
       <CardHeader
         title={step.name}
         subheader={`${startDate.toLocaleString("en-GB", dateOptions)} - ${
@@ -44,7 +45,13 @@ export function JobStep({ step }: { step: LifeStep }) {
         }`}
         avatar={
           step.photos?.[0] ? (
-            <Image src={step.photos?.[0]} />
+            <img src={step.photos?.[0]} style={{
+              maxHeight: 30,
+              minHeight: 30,
+              objectFit: "contain",
+              margin: "auto"
+              
+            }}/>
           ) : (
             <Avatar className={style[`avatar--${stepStylePrefix}`]}>
               {step.name

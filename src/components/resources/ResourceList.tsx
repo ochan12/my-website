@@ -32,7 +32,7 @@ export default function ResourceList({
   if (isLoading) return <CircularProgress />;
 
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={2}>
       {resources?.map((resource) => (
         <Grid item key={resource.name}>
           <Link href={resource.url}>{ImageCompoment(resource)}</Link>

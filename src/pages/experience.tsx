@@ -1,67 +1,79 @@
-import {
-  Avatar,
-  CircularProgress,
-  Grid,
-  Step,
-  StepLabel,
-  Stepper,
-} from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 import Layout from "components/layout/Layout";
+import { HeaderStep } from "components/steps/HeaderStep";
 import { JobStep } from "components/steps/JobStep";
 import { StepType } from "interfaces";
 import { useStepsByType } from "lib/api";
 import Head from "next/head";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef, useState } from "react";
+import SwiperBase from "swiper";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
-import { useState } from "react";
 
 export default function Jobs() {
   const { steps, isLoading, isError } = useStepsByType(StepType.JOB);
-  const [activeJob, setActiveJob] = useState(2)
+  const [activeJobIndex, setActiveJob] = useState(2);
+  const [swiper, setSwiper] = useState<SwiperBase | null>(null);
+
+  const slideTo = (index: number) => swiper?.slideTo(index);
   return (
     <Layout>
       <Head>
         <title>Jobs</title>
       </Head>
-        <Grid
-          container
-          justifyContent={"center"}
-          xs={12}
-          spacing={2}
-          className="whitespace-nowrap mt-4"
-        >
-          {isLoading ? (
-            <Grid item>
-              <CircularProgress />
+      <Grid
+        container
+        justifyContent={"center"}
+        xs={12}
+        spacing={1}
+        className="whitespace-nowrap"
+      >
+        {isLoading ? (
+          <Grid item>
+            <CircularProgress />
+          </Grid>
+        ) : (
+          <Grid container item xs={12} className="p-2">
+            <Grid
+              container
+              xs={12}
+              justifyContent="center"
+              className="p-2"
+              spacing={2}
+            >
+              {steps?.map((step, index) => (
+                <Grid item xs={2}>
+                  <HeaderStep
+                    step={step}
+                    currentStepIndex={activeJobIndex}
+                    isActiveIndex={index === activeJobIndex}
+                    onClick={() => {
+                      setActiveJob(index);
+                      slideTo(index)
+                    }}
+                  />
+                </Grid>
+              ))}
             </Grid>
-          ) : (
-            <Grid item xs={12}>
-              <Grid container spacing={2} xs={12} justifyContent="center">
-                <Grid item xs={10}>
-                  <Stepper alternativeLabel activeStep={activeJob}>
-                    {steps?.map((step) => (
-                      <Step key={step.name}>
-                        <StepLabel>{step.name}</StepLabel>
-                      </Step>
-                    ))}
-                  </Stepper>
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Swiper spaceBetween={10} initialSlide={activeJob} onSlideChangeTransitionEnd={(swiper) =>{
-                    setActiveJob(swiper.activeIndex)
-                  }}>
-                    {steps?.map((step) => (
-                      <SwiperSlide>
-                        <JobStep step={step} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </Grid>
+            <Grid container spacing={2} xs={12} justifyContent="center">
+              <Grid item xs={12}>
+                <Swiper
+                  spaceBetween={10}
+                  initialSlide={activeJobIndex}
+                  navigation={true}
+                  onSwiper={setSwiper}
+                >
+                  {steps?.map((step) => (
+                    <SwiperSlide>
+                      <JobStep step={step} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </Grid>
             </Grid>
-          )}
-        </Grid>
+          </Grid>
+        )}
+      </Grid>
     </Layout>
   );
 }
