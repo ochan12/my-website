@@ -35,7 +35,9 @@ export default function ResourceList({
     <Grid container spacing={2}>
       {resources?.map((resource) => (
         <Grid item key={resource.name}>
-          <Link href={resource.url}>{ImageCompoment(resource)}</Link>
+          <a href={resource.url}>
+            {ImageCompoment(resource)}
+          </a>
         </Grid>
       ))}
     </Grid>

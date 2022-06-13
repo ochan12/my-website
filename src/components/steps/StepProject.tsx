@@ -3,10 +3,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Grid,
-  ListItem,
-  ListItemText,
-  Typography,
+  Grid, Typography
 } from "@mui/material";
 import { Project } from "interfaces";
 import { useResources } from "lib/api";
@@ -40,15 +37,15 @@ function projectDescription(project: Project) {
 
 export function StepProject({ project }: { project: Project }) {
   return (
-    <ListItem>
-      <ListItemText
-        primary={
-          <Typography sx={{ whiteSpace: "pre-wrap" }} variant="subtitle1">
-            {project.name}
-          </Typography>
-        }
-        secondary={projectDescription(project)}
-      />
-    </ListItem>
+    <Grid container xs={12} justifyContent="center">
+      <Grid item xs={12}>
+        <Typography sx={{ whiteSpace: "pre-wrap" }} variant="subtitle2">
+          {project.name}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        {projectDescription(project)}
+      </Grid>
+    </Grid>
   );
 }

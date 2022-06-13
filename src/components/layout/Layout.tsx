@@ -1,8 +1,22 @@
-import { Grid } from "@mui/material";
+import { createTheme, Grid } from "@mui/material";
+import { ThemeProvider } from "@mui/system";
 import AppDrawer from "components/drawer/Drawer";
 import Head from "next/head";
 
 export const siteTitle = "Mateo";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      "Poppins",
+      "Nunito",
+      "Roboto",
+      "Helvetica Neue",
+      "Arial",
+      "sans-serif",
+    ].join(","),
+  },
+});
 
 export default function Layout({ children, home }: any) {
   return (
@@ -22,13 +36,16 @@ export default function Layout({ children, home }: any) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-
-      <Grid container justifyContent={"space-between"}>
-        <Grid item xs={2}>
-          <AppDrawer />
+      <ThemeProvider theme={theme}>
+        <Grid container justifyContent={"space-between"}>
+          <Grid item xs={2}>
+            <AppDrawer />
+          </Grid>
+          <Grid item xs={10}>
+            {children}
+          </Grid>
         </Grid>
-        <Grid xs={10}>{children}</Grid>
-      </Grid>
+      </ThemeProvider>
     </div>
   );
 }

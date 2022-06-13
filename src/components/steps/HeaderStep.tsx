@@ -48,9 +48,9 @@ export function HeaderStep({
           </Avatar>
         )}
       </Grid>
-      <Grid item xs={12}>
+      {/* <Grid item xs={12}>
         <Typography variant="caption">{step.name}</Typography>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }

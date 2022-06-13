@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Grid,
   List,
   ListItem,
   ListItemText,
@@ -35,7 +36,10 @@ export function JobStep({ step }: { step: LifeStep }) {
   );
 
   return (
-    <Card className={style[`card-background--${stepStylePrefix}`]} elevation={0}>
+    <Card
+      className={style[`card-background--${stepStylePrefix}`]}
+      elevation={0}
+    >
       <CardHeader
         title={step.name}
         subheader={`${startDate.toLocaleString("en-GB", dateOptions)} - ${
@@ -45,13 +49,15 @@ export function JobStep({ step }: { step: LifeStep }) {
         }`}
         avatar={
           step.photos?.[0] ? (
-            <img src={step.photos?.[0]} style={{
-              maxHeight: 30,
-              minHeight: 30,
-              objectFit: "contain",
-              margin: "auto"
-              
-            }}/>
+            <img
+              src={step.photos?.[0]}
+              style={{
+                maxHeight: 30,
+                minHeight: 30,
+                objectFit: "contain",
+                margin: "auto",
+              }}
+            />
           ) : (
             <Avatar className={style[`avatar--${stepStylePrefix}`]}>
               {step.name
@@ -67,11 +73,13 @@ export function JobStep({ step }: { step: LifeStep }) {
         <ResourceList
           resourcesList={step.projects.flatMap((p) => p.resources)}
         />
-        <List>
+        <Grid container spacing={4}>
           {step.projects.map((s) => (
-            <StepProject project={s} />
+            <Grid item xs={12} sm={6}>
+              <StepProject project={s} />
+            </Grid>
           ))}
-        </List>
+        </Grid>
       </CardContent>
     </Card>
   );
