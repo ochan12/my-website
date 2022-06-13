@@ -17,24 +17,33 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-
-function DrawerHeader({ ...props }) {
-  return <Box {...props}></Box>;
-}
 
 interface DrawerItem {
   title: string;
   href: string;
   icon: React.ReactElement;
 }
-function useDrawerItems(): DrawerItem[] {
+
+function getIconImage(fileName: string) {
+  return (
+    <img
+      src={`/img/icons/${fileName}.svg`}
+      style={{
+        maxHeight: 30,
+      }}
+    />
+  );
+}
+
+function useDrawerItems(theme: "light" | "dark"): DrawerItem[] {
   return [
     {
       title: "Home",
       href: "/",
-      icon: <HomeOutlined fontSize="small" />,
+      icon: getIconImage(theme === "light" ? "resistance" : "deathStar"),
     },
     {
       title: "Jobs",
@@ -44,19 +53,19 @@ function useDrawerItems(): DrawerItem[] {
     {
       title: "Skills",
       href: "/skills",
-      icon: <Code fontSize="small" />,
+      icon: getIconImage(`lightSaber_${theme}`),
     },
     {
       title: "Travel",
       href: "/travel",
-      icon: <FlightTakeoffOutlined fontSize="small" />,
+      icon: getIconImage(`spaceship_${theme}`),
     },
   ];
 }
 
 export default function AppDrawer() {
-  const drawerItems = useDrawerItems();
   const theme = useTheme();
+  const drawerItems = useDrawerItems(theme.palette.mode);
   const upToMedium = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <Grid container className="border-r-0" flexDirection={"column"}>
@@ -74,15 +83,10 @@ export default function AppDrawer() {
       <Grid item>
         <List>
           {drawerItems.map((item) => (
-            <Link
-              href={item.href}
-              key={item.title}
-            >
-              <ListItem disablePadding >
+            <Link href={item.href} key={item.title}>
+              <ListItem disablePadding>
                 <ListItemButton sx={{ justifyContent: "center" }}>
-                  <ListItemIcon sx={{ justifyContent: "center" }}>
-                    {item.icon}
-                  </ListItemIcon>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
                   {upToMedium && (
                     <ListItemText>
                       <code>{item.title}</code>

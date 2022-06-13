@@ -3,13 +3,29 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
-  LinearProgress,
   Card,
   CardHeader,
   CardContent,
   List,
+  styled,
 } from "@mui/material";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
 import { Skill, Resource } from "interfaces";
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor:
+      "transparent"
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: "primary",
+  },
+}));
 
 type ResourceMap = { [k: string]: Resource };
 
@@ -31,7 +47,7 @@ function SkillItem(skill: Skill, resourcesMap: ResourceMap) {
         />
       </ListItemAvatar>
       <ListItemText>
-        <LinearProgress
+        <BorderLinearProgress
           color="primary"
           value={skill.experience}
           variant="determinate"

@@ -16,6 +16,14 @@ const theme = createTheme({
       "sans-serif",
     ].join(","),
   },
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#2E67F8",
+      light: "#2E67F8",
+      dark: "#EB212E",
+    },
+  },
 });
 
 export default function Layout({ children, home }: any) {
