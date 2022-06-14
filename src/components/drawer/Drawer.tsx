@@ -1,25 +1,20 @@
+import { CasesOutlined } from "@mui/icons-material";
 import {
-  CasesOutlined,
-  Code,
-  FlightTakeoffOutlined,
-  HomeOutlined,
-} from "@mui/icons-material";
-import {
-  Box,
   Divider,
-  Drawer,
   Grid,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  ToggleButton,
+  ToggleButtonGroup,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import Image from "next/image";
+import { ColorModeContext } from "components/theme/ThemeWrapper";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext } from "react";
 
 interface DrawerItem {
   title: string;
@@ -43,7 +38,7 @@ function useDrawerItems(theme: "light" | "dark"): DrawerItem[] {
     {
       title: "Home",
       href: "/",
-      icon: getIconImage(theme === "light" ? "resistance" : "deathStar"),
+      icon: getIconImage(`home_${theme}`),
     },
     {
       title: "Jobs",
@@ -65,17 +60,33 @@ function useDrawerItems(theme: "light" | "dark"): DrawerItem[] {
 
 export default function AppDrawer() {
   const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
   const drawerItems = useDrawerItems(theme.palette.mode);
   const upToMedium = useMediaQuery(theme.breakpoints.up("md"));
+  console.log("drawer", { mode: theme.palette.mode });
   return (
     <Grid container className="border-r-0" flexDirection={"column"}>
-      <Grid
-        container
-        alignItems="center"
-        justifyContent={"center"}
-        className="m-0 p-2 text-ellipsis"
-      >
-        {upToMedium ? <code>{"< Mateo />"}</code> : <code>{"< M />"}</code>}
+      <Grid container className="m-0 p-2 text-ellipsis">
+        <Grid item xs={12} alignItems="center" justifyContent={"center"}>
+          <ToggleButtonGroup
+            value={theme.palette.mode}
+            exclusive
+            onChange={(event, value) => {
+              if (value !== theme.palette.mode) colorMode.toggleColorMode();
+              else return;
+            }}
+          >
+            <ToggleButton value="light">
+              {getIconImage("theme_light")}
+            </ToggleButton>
+            <ToggleButton value="dark">
+              {getIconImage("theme_dark")}
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Grid>
+        <Grid item xs={12} alignItems="center" justifyContent={"center"}>
+          {upToMedium ? <code>{"< Mateo />"}</code> : <code>{"< M />"}</code>}
+        </Grid>
       </Grid>
       <Grid item>
         <Divider />

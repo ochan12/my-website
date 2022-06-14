@@ -1,18 +1,12 @@
-import { Margin } from "@mui/icons-material";
 import {
   Avatar,
   Card,
   CardContent,
   CardHeader,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
+  Grid, Typography
 } from "@mui/material";
 import ResourceList from "components/resources/ResourceList";
 import { LifeStep } from "interfaces";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import style from "./JobStep.module.scss";
 import { StepProject } from "./StepProject";

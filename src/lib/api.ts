@@ -47,7 +47,7 @@ export function useStepsByType(stepType: StepType) {
 }
 
 export function useResources(resources: string[]) {
-  const uid: Key = `${getConfigEnv().apiUrl}}resources?ids=${resources.join(
+  const uid: Key = `${getConfigEnv().apiUrl}resources?ids=${resources.join(
     ","
   )}`;
   const { data, error } = useSWR(uid, resourceFetcher);

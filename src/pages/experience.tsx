@@ -5,10 +5,10 @@ import { JobStep } from "components/steps/JobStep";
 import { StepType } from "interfaces";
 import { useStepsByType } from "lib/api";
 import Head from "next/head";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import SwiperBase from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Jobs() {
   const { steps, isLoading, isError } = useStepsByType(StepType.JOB);
@@ -55,7 +55,7 @@ export default function Jobs() {
                 </Grid>
               ))}
             </Grid>
-            <Grid container item xs={12} spacing={2} justifyContent="center">
+            <Grid container item xs={12} spacing={2} className="mt-4" justifyContent="center">
               <Swiper
                 spaceBetween={10}
                 initialSlide={activeJobIndex}
