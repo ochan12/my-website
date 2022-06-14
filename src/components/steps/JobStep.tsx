@@ -51,6 +51,7 @@ export function JobStep({ step }: { step: LifeStep }) {
           step.photos?.[0] ? (
             <img
               src={step.photos?.[0]}
+              alt={step.name}
               style={{
                 maxHeight: 30,
                 minHeight: 30,
@@ -74,8 +75,8 @@ export function JobStep({ step }: { step: LifeStep }) {
           resourcesList={step.projects.flatMap((p) => p.resources)}
         />
         <Grid container spacing={4}>
-          {step.projects.map((s) => (
-            <Grid item xs={12} sm={6}>
+          {step.projects.map((s, index) => (
+            <Grid item xs={12} sm={6} key={index}>
               <StepProject project={s} />
             </Grid>
           ))}

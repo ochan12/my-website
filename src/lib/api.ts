@@ -1,5 +1,6 @@
 import { LifeStep, Resource, StepType } from "interfaces";
 import useSWR, { Fetcher, Key } from "swr";
+import { getConfigEnv } from "./config";
 
 const headers: HeadersInit = {
   Authorization: `Basic ${btoa(
@@ -32,9 +33,10 @@ const getUrlFromStepType = (stepType: StepType) => {
   }
 };
 
-const apiRoot = "http://localhost:8080";
 export function useStepsByType(stepType: StepType) {
-  const uid: Key = `${apiRoot}/life/${getUrlFromStepType(stepType)}`;
+  const uid: Key = `${getConfigEnv().apiUrl}life/${getUrlFromStepType(
+    stepType
+  )}`;
   const { data, error } = useSWR(uid, lifeStepFetcher);
 
   return {
@@ -45,7 +47,9 @@ export function useStepsByType(stepType: StepType) {
 }
 
 export function useResources(resources: string[]) {
-  const uid: Key = `${apiRoot}/resources?ids=${resources.join(",")}`;
+  const uid: Key = `${getConfigEnv().apiUrl}}resources?ids=${resources.join(
+    ","
+  )}`;
   const { data, error } = useSWR(uid, resourceFetcher);
 
   return {

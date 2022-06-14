@@ -9,7 +9,7 @@ import { Project } from "interfaces";
 import { useResources } from "lib/api";
 import Link from "next/link";
 
-function projectDescription(project: Project) {
+function ProjectDescription(project: Project) {
   const { resources, isError, isLoading } = useResources(project.resources);
   return (
     <Accordion elevation={0}>
@@ -22,8 +22,8 @@ function projectDescription(project: Project) {
         <Grid container spacing={2}>
           {project.resources &&
             resources &&
-            resources.map((resource) => (
-              <Grid item>
+            resources.map((resource, index) => (
+              <Grid item key={index}>
                 <Typography variant="caption">
                   <Link href={resource.url}>{resource.name}</Link>
                 </Typography>
@@ -44,7 +44,7 @@ export function StepProject({ project }: { project: Project }) {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        {projectDescription(project)}
+        {ProjectDescription(project)}
       </Grid>
     </Grid>
   );

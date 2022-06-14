@@ -24,7 +24,6 @@ export default function Jobs() {
       <Grid
         container
         justifyContent={"center"}
-        xs={12}
         spacing={1}
         className="whitespace-nowrap"
       >
@@ -36,40 +35,39 @@ export default function Jobs() {
           <Grid container item xs={12} className="p-2">
             <Grid
               container
+              item
               xs={12}
               justifyContent="center"
               className="p-2"
               spacing={2}
             >
               {steps?.map((step, index) => (
-                <Grid item xs={2}>
+                <Grid item xs={2} key={index}>
                   <HeaderStep
                     step={step}
                     currentStepIndex={activeJobIndex}
                     isActiveIndex={index === activeJobIndex}
                     onClick={() => {
                       setActiveJob(index);
-                      slideTo(index)
+                      slideTo(index);
                     }}
                   />
                 </Grid>
               ))}
             </Grid>
-            <Grid container spacing={2} xs={12} justifyContent="center">
-              <Grid item xs={12}>
-                <Swiper
-                  spaceBetween={10}
-                  initialSlide={activeJobIndex}
-                  navigation={true}
-                  onSwiper={setSwiper}
-                >
-                  {steps?.map((step) => (
-                    <SwiperSlide>
-                      <JobStep step={step} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </Grid>
+            <Grid container item xs={12} spacing={2} justifyContent="center">
+              <Swiper
+                spaceBetween={10}
+                initialSlide={activeJobIndex}
+                navigation={true}
+                onSwiper={setSwiper}
+              >
+                {steps?.map((step, index) => (
+                  <SwiperSlide key={index}>
+                    <JobStep step={step} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </Grid>
           </Grid>
         )}

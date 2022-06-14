@@ -30,7 +30,7 @@ export default function Home() {
         </Grid>
         <Grid item xs={12} className="text-center">
           <p className="text-lg text-opacity-50 max-w-lg m-auto">
-            Hello there! I'm Mateo and for some misterious reason (or maybe not)
+            Hello there! I&apos;m Mateo and for some misterious reason (or maybe not)
             you end up in my website. You might want to check out:
           </p>
         </Grid>
@@ -46,7 +46,7 @@ export default function Home() {
               <Link href={"/travel"}>Where I travelled?</Link>
             </li>
             <li className="list-item">
-              <Link href={"/hobbies"}>What do I do while I'm not coding</Link>
+              <Link href={"/hobbies"}>What do I do while I&apos;m not coding</Link>
             </li>
           </ul>
         </Grid>

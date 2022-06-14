@@ -34,7 +34,7 @@ export default function Skills() {
         ) ?? {};
       setResourceMap(reducedResources);
     }
-  }, [resources]);
+  }, [resources, isError, isLoading]);
   return (
     <Layout>
       <Grid container spacing={2} padding={2}>

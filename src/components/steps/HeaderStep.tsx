@@ -25,13 +25,16 @@ export function HeaderStep({
     >
       <Grid item xs={12} justifyContent="center" textAlign={"center"}>
         {step.photos?.[0] ? (
-          <img src={step.photos?.[0]} style={{
-            maxHeight: 50,
-            minHeight: 50,
-            objectFit: "contain",
-
-            margin: "auto"
-          }}/>
+          <img
+            src={step.photos?.[0]}
+            style={{
+              maxHeight: 50,
+              minHeight: 50,
+              objectFit: "contain",
+              margin: "auto",
+            }}
+            alt={step.name}
+          />
         ) : (
           <Avatar
             sx={{
