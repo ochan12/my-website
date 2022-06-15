@@ -2,6 +2,7 @@ import { CasesOutlined } from "@mui/icons-material";
 import {
   Divider,
   Grid,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -14,6 +15,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { ColorModeContext } from "components/theme/ThemeWrapper";
+import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 
@@ -23,13 +25,13 @@ interface DrawerItem {
   icon: React.ReactElement;
 }
 
-function getIconImage(fileName: string) {
+function getIconImage(fileName: string, height = 30) {
   return (
-    <img
+    <Image
       src={`/img/icons/${fileName}.svg`}
-      style={{
-        maxHeight: 30,
-      }}
+      alt={fileName}
+      height={height}
+      width={30}
     />
   );
 }
@@ -88,10 +90,10 @@ export default function AppDrawer() {
               }}
             >
               <ToggleButton value="light">
-                {getIconImage("theme_light")}
+                {getIconImage("theme_light", 50)}
               </ToggleButton>
               <ToggleButton value="dark">
-                {getIconImage("theme_dark")}
+                {getIconImage("theme_dark", 50)}
               </ToggleButton>
             </ToggleButtonGroup>
           </Grid>
@@ -103,7 +105,7 @@ export default function AppDrawer() {
       <Grid item>
         <Divider />
       </Grid>
-      <Grid item>
+      <Grid item justifyContent={"center"}>
         <List>
           {drawerItems.map((item) => (
             <Link href={item.href} key={item.title}>
