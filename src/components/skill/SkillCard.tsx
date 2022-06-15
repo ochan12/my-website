@@ -12,18 +12,22 @@ import {
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import {
+  DARK_PRIMARY_COLOR,
+  LIGHT_PRIMARY_COLOR,
+} from "components/theme/ThemeWrapper";
 import { Skill, Resource } from "interfaces";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 10,
+  height: 8,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor:
-      "transparent"
+    backgroundColor: "transparent",
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: "primary",
+    backgroundColor:
+      theme.palette.mode === "dark" ? DARK_PRIMARY_COLOR : LIGHT_PRIMARY_COLOR,
   },
 }));
 
@@ -34,6 +38,7 @@ function SkillItem(skill: Skill, resourcesMap: ResourceMap) {
     <ListItem key={skill.name}>
       <ListItemAvatar>
         <Avatar
+          variant="rounded"
           imgProps={{
             style: {
               objectFit: "contain",
