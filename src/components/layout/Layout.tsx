@@ -1,38 +1,36 @@
-import { Grid } from "@mui/material";
+import { Box, Grid, Paper, ThemeProvider } from "@mui/material";
 import AppDrawer from "components/drawer/Drawer";
-import { ThemeWrapper } from "components/theme/ThemeWrapper";
+import { ColorModeContext, ThemeWrapper } from "components/theme/ThemeWrapper";
 import Head from "next/head";
+import { useContext } from "react";
 
 export const siteTitle = "Mateo";
 
 export default function Layout({ children, home }: any) {
+  const colorMode = useContext(ColorModeContext);
   return (
-    <div>
+    <Paper elevation={0} sx={{ borderRadius: 0, height: "100vh" }}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
+        <link
+          rel="icon"
+          href="https://img.icons8.com/color/48/undefined/laptop--v1.png"
         />
+        <meta name="description" content="Mateo's personal site" />
         <meta
           property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          content={`https://img.icons8.com/color/48/undefined/laptop--v1.png`}
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <ThemeWrapper>
-        <Grid container justifyContent={"space-between"}>
-          <Grid item xs={2}>
-            <AppDrawer />
-          </Grid>
-          <Grid item xs={10}>
-            {children}
-          </Grid>
+      <Grid container justifyContent={"space-between"} height={"100%"}>
+        <Grid item xs={2}>
+          <AppDrawer />
         </Grid>
-      </ThemeWrapper>
-    </div>
+        <Grid item xs={10}>
+          {children}
+        </Grid>
+      </Grid>
+    </Paper>
   );
 }

@@ -1,23 +1,28 @@
-import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { useMemo, useState } from "react";
 
-export const ColorModeContext = React.createContext({
+export const ColorModeContext = React.createContext<{
+  toggleColorMode: (newMode: "dark" | "light") => void;
+  theme: "dark" | "light";
+}>({
   toggleColorMode: () => {},
+  theme: "light",
 });
+
+export const DARK_PRIMARY_COLOR = "#EB212E";
+export const LIGHT_PRIMARY_COLOR = "#2E67F8";
 
 export function ThemeWrapper({ children }: { children: any }) {
   const [mode, setMode] = useState<"light" | "dark">("light");
   const colorMode = useMemo(
     () => ({
-      toggleColorMode: () => {
-        console.log({ mode });
-        setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
+      toggleColorMode: (newMode: "dark" | "light") => {
+        setMode(newMode);
       },
+      theme: mode,
     }),
-    []
+    [mode]
   );
-
   const theme = useMemo(
     () =>
       createTheme({
@@ -32,19 +37,21 @@ export function ThemeWrapper({ children }: { children: any }) {
           ].join(","),
         },
         palette: {
-          mode,
+          mode: mode,
           primary: {
             main: "#2E67F8",
-            light: "#2E67F8",
-            dark: "#EB212E",
+            light: LIGHT_PRIMARY_COLOR,
+            dark: DARK_PRIMARY_COLOR,
           },
         },
       }),
     [mode]
   );
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </ColorModeContext.Provider>
+    <ThemeProvider theme={theme}>
+      <ColorModeContext.Provider value={colorMode}>
+        {children}
+      </ColorModeContext.Provider>
+    </ThemeProvider>
   );
 }

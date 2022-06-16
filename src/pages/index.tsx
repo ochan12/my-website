@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout, { siteTitle } from "components/layout/Layout";
 import Link from "next/link";
 import Image from "next/image";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 export default function Home() {
   return (
@@ -29,10 +29,21 @@ export default function Home() {
           />
         </Grid>
         <Grid item xs={12} className="text-center">
-          <p className="text-lg text-opacity-50 max-w-lg m-auto">
-            Hello there! I&apos;m Mateo and for some misterious reason (or maybe not)
-            you end up in my website. You might want to check out:
-          </p>
+          <Typography
+            variant="subtitle1"
+            className="text-lg text-opacity-50 max-w-lg m-auto"
+          >
+            Hello there!{" "}
+            <Image
+              src={"/img/obi_wan.svg"}
+              alt="Hello there..."
+              title="Hello there..."
+              width={20}
+              height={20}
+            />{" "}
+            I&apos;m Mateo and for some misterious reason (or maybe not) you ended
+            up in my website. You might want to check out:
+          </Typography>
         </Grid>
         <Grid item xs={12} className="text-center">
           <ul
@@ -46,7 +57,9 @@ export default function Home() {
               <Link href={"/travel"}>Where I travelled?</Link>
             </li>
             <li className="list-item">
-              <Link href={"/hobbies"}>What do I do while I&apos;m not coding</Link>
+              <Link href={"/hobbies"}>
+                What do I do while I&apos;m not coding
+              </Link>
             </li>
           </ul>
         </Grid>
