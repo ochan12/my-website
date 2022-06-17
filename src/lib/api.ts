@@ -6,6 +6,7 @@ const headers: HeadersInit = {
   Authorization: `Basic ${btoa(
     `${process.env.NEXT_PUBLIC_USERNAME}:${process.env.NEXT_PUBLIC_PASSWORD}`
   )}`,
+  "Access-Control-Allow-Origin": "*",
 };
 
 export const lifeStepFetcher: Fetcher<LifeStep[], string> = (...args) => {
