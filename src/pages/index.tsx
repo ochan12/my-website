@@ -30,8 +30,8 @@ export default function Home() {
         </Grid>
         <Grid item xs={12} className="text-center">
           <Typography
-            variant="subtitle1"
-            className="text-lg text-opacity-50 max-w-lg m-auto"
+            variant="body1"
+            className="text-lg text-opacity-50 max-w-lg text-center margin-auto"
           >
             Hello there!{" "}
             <Image
@@ -41,8 +41,8 @@ export default function Home() {
               width={20}
               height={20}
             />{" "}
-            I&apos;m Mateo and for some misterious reason (or maybe not) you ended
-            up in my website. You might want to check out:
+            I&apos;m Mateo and for some misterious reason (or maybe not) you
+            ended up in my website. You might want to check out:
           </Typography>
         </Grid>
         <Grid item xs={12} className="text-center">
