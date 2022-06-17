@@ -12,12 +12,14 @@ const headers: HeadersInit = {
 export const lifeStepFetcher: Fetcher<LifeStep[], string> = (...args) => {
   return fetch(...args, {
     headers,
+    mode: "no-cors"
   }).then((res) => res.json());
 };
 
 export const resourceFetcher: Fetcher<Resource[], string> = (...args) => {
   return fetch(...args, {
     headers,
+    mode: "no-cors"
   }).then((res) => res.json());
 };
 
