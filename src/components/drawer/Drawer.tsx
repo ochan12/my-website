@@ -1,4 +1,3 @@
-import { CasesOutlined } from "@mui/icons-material";
 import {
   Divider,
   Grid,
@@ -11,14 +10,14 @@ import {
   ToggleButtonGroup,
   Typography,
   useMediaQuery,
-  useTheme,
+  useTheme
 } from "@mui/material";
 import { ColorModeContext } from "components/theme/ThemeWrapper";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-
+import style from "./Drawer.module.scss";
 interface DrawerItem {
   title: string;
   href: string;
@@ -61,7 +60,7 @@ function useDrawerItems(theme: "light" | "dark"): DrawerItem[] {
     {
       title: "Hobbies",
       href: "/hobbies",
-      icon: getIconImage(`spaceship_${theme}`),
+      icon: getIconImage(`hobbies_${theme}`, 30),
     },
   ];
 }
@@ -104,7 +103,9 @@ export default function AppDrawer() {
             </ToggleButtonGroup>
           </Grid>
           <Grid item xs={12} textAlign="center">
-            {upToMedium ? <code>{"< Mateo />"}</code> : <code>{"< M />"}</code>}
+            <code className={style.starWarsGlyph}>
+              {upToMedium ? "< Mateo />" : "< M />"}
+            </code>
           </Grid>
         </Grid>
       </Grid>

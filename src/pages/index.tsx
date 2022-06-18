@@ -2,9 +2,10 @@ import Head from "next/head";
 import Layout, { siteTitle } from "components/layout/Layout";
 import Link from "next/link";
 import Image from "next/image";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, useTheme } from "@mui/material";
 
 export default function Home() {
+  const theme = useTheme();
   return (
     <Layout home>
       <Head>
@@ -35,7 +36,9 @@ export default function Home() {
           >
             Hello there!{" "}
             <Image
-              src={"/img/obi_wan.svg"}
+              src={`/img/icons/${
+                theme.palette.mode === "light" ? "obi_wan.svg" : "emperor.svg"
+              }`}
               alt="Hello there..."
               title="Hello there..."
               width={20}
