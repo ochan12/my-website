@@ -1,8 +1,7 @@
-import { CircularProgress, Grid } from "@mui/material";
+import { Grid, LinearProgress } from "@mui/material";
 import { Resource } from "interfaces";
 import { useResources } from "lib/api";
 import Image from "next/image";
-import Link from "next/link";
 
 const ImageCompoment = (res: Resource) => {
   let imageComponent = null;
@@ -29,15 +28,14 @@ export default function ResourceList({
   resourcesList: string[];
 }) {
   const { resources, isError, isLoading } = useResources(resourcesList);
-  if (isLoading) return <CircularProgress />;
+
+  if (isLoading) return <LinearProgress className="m-4" color="primary" />;
 
   return (
     <Grid container spacing={2}>
       {resources?.map((resource) => (
         <Grid item key={resource.name}>
-          <a href={resource.url}>
-            {ImageCompoment(resource)}
-          </a>
+          <a href={resource.url}>{ImageCompoment(resource)}</a>
         </Grid>
       ))}
     </Grid>

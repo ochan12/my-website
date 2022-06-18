@@ -2,7 +2,6 @@ import { CasesOutlined } from "@mui/icons-material";
 import {
   Divider,
   Grid,
-  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -17,6 +16,7 @@ import {
 import { ColorModeContext } from "components/theme/ThemeWrapper";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 
 interface DrawerItem {
@@ -25,10 +25,10 @@ interface DrawerItem {
   icon: React.ReactElement;
 }
 
-function getIconImage(fileName: string, height = 30) {
+function getIconImage(fileName: string, height = 30, fileExtension = "svg") {
   return (
     <Image
-      src={`/img/icons/${fileName}.svg`}
+      src={`/img/icons/${fileName}.${fileExtension}`}
       alt={fileName}
       height={height}
       width={30}
@@ -46,7 +46,7 @@ function useDrawerItems(theme: "light" | "dark"): DrawerItem[] {
     {
       title: "Jobs",
       href: "/experience",
-      icon: <CasesOutlined fontSize="small" />,
+      icon: getIconImage(`jobs_${theme}`),
     },
     {
       title: "Skills",
@@ -58,6 +58,11 @@ function useDrawerItems(theme: "light" | "dark"): DrawerItem[] {
       href: "/travel",
       icon: getIconImage(`spaceship_${theme}`),
     },
+    {
+      title: "Hobbies",
+      href: "/hobbies",
+      icon: getIconImage(`spaceship_${theme}`),
+    },
   ];
 }
 
@@ -66,6 +71,7 @@ export default function AppDrawer() {
   const colorMode = useContext(ColorModeContext);
   const drawerItems = useDrawerItems(colorMode.theme);
   const upToMedium = useMediaQuery(theme.breakpoints.up("md"));
+  const router = useRouter();
 
   return (
     <Grid
@@ -109,7 +115,14 @@ export default function AppDrawer() {
         <List>
           {drawerItems.map((item) => (
             <Link href={item.href} key={item.title}>
-              <ListItem disablePadding>
+              <ListItem
+                sx={{
+                  color:
+                    item.href === router.route
+                      ? theme.palette.primary[colorMode.theme]
+                      : theme.palette.text.primary,
+                }}
+              >
                 <ListItemButton sx={{ justifyContent: "center" }}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   {upToMedium && (

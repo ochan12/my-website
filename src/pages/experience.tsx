@@ -32,15 +32,8 @@ export default function Jobs() {
             <CircularProgress />
           </Grid>
         ) : (
-          <Grid container item xs={12} className="p-2">
-            <Grid
-              container
-              item
-              xs={12}
-              justifyContent="center"
-              className="p-2"
-              spacing={2}
-            >
+          <Grid item xs={12}>
+            <Grid container justifyContent="center" className="p-2" spacing={2}>
               {steps?.map((step, index) => (
                 <Grid item xs={2} key={index}>
                   <HeaderStep
@@ -55,7 +48,7 @@ export default function Jobs() {
                 </Grid>
               ))}
             </Grid>
-            <Grid container item xs={12} spacing={2} className="mt-4" justifyContent="center">
+            <Grid item xs={12} className="mt-4 p-4" justifyContent="right">
               <Swiper
                 spaceBetween={10}
                 initialSlide={activeJobIndex}
