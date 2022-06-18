@@ -1,12 +1,19 @@
-import { Grid, Paper } from "@mui/material";
+import { Grid, Paper, useTheme } from "@mui/material";
 import AppDrawer from "components/drawer/Drawer";
 import Head from "next/head";
 
 export const siteTitle = "Mateo";
 
 export default function Layout({ children, home }: any) {
+  const theme = useTheme();
   return (
-    <Paper elevation={0} sx={{ borderRadius: 0, height: "100vh" }}>
+    <Paper
+      elevation={0}
+      sx={{
+        borderRadius: 0,
+        minHeight: "100vh"
+      }}
+    >
       <Head>
         <link
           rel="icon"

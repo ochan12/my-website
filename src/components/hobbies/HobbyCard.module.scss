@@ -1,0 +1,11 @@
+$starWarsDarkPrimary: #eb212e;
+$starWarsLightPrimary: #2e67f8;
+
+.swiper-button {
+  &dark > * {
+    color: $starWarsDarkPrimary !important;
+  }
+  &light > * {
+    color: $starWarsLightPrimary !important;
+  }
+}
