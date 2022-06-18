@@ -8,9 +8,9 @@ export default function Hobbies() {
       <Grid
         container
         alignItems={"center"}
-        height="100vh"
         spacing={2}
         justifyContent="center"
+        className="p-4"
       >
         <Grid item md={4} xs={12}>
           <HobbyCard

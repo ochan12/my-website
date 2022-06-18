@@ -1,7 +1,16 @@
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Navigation } from "swiper";
+import "swiper/css/navigation";
+import { useContext } from "react";
+import {
+  ColorModeContext,
+  DARK_PRIMARY_COLOR,
+  LIGHT_PRIMARY_COLOR,
+} from "components/theme/ThemeWrapper";
+import style from "./HobbyCard.module.scss";
 
 export function HobbyCard({
   title,
@@ -43,11 +52,18 @@ export function HobbySwiperCard({
   imagesUrl: string[];
   alt: string;
 }) {
+  const colorMode = useContext(ColorModeContext);
   return (
     <Paper className="p-2 border" elevation={0}>
       <Typography variant="h4">{title}</Typography>
       <Typography variant="subtitle1">{subtitle}</Typography>
-      <Swiper spaceBetween={10} navigation={true}>
+      <Swiper
+        navigation={{
+          enabled: true,
+        }}
+        modules={[Navigation]}
+        className={style[`swiper-button${colorMode.theme}`]}
+      >
         {imagesUrl.map((url, index) => (
           <SwiperSlide key={index}>
             <div className="text-center">
