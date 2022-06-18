@@ -1,13 +1,10 @@
-import { Box, Grid, Paper, ThemeProvider } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import AppDrawer from "components/drawer/Drawer";
-import { ColorModeContext, ThemeWrapper } from "components/theme/ThemeWrapper";
 import Head from "next/head";
-import { useContext } from "react";
 
 export const siteTitle = "Mateo";
 
 export default function Layout({ children, home }: any) {
-  const colorMode = useContext(ColorModeContext);
   return (
     <Paper elevation={0} sx={{ borderRadius: 0, height: "100vh" }}>
       <Head>

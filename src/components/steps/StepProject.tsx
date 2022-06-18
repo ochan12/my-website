@@ -37,7 +37,7 @@ function ProjectDescription(project: Project) {
 
 export function StepProject({ project }: { project: Project }) {
   return (
-    <Grid container xs={12} justifyContent="center">
+    <Grid container justifyContent="center">
       <Grid item xs={12}>
         <Typography sx={{ whiteSpace: "pre-wrap" }} variant="subtitle2">
           {project.name}

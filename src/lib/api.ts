@@ -2,24 +2,21 @@ import { LifeStep, Resource, StepType } from "interfaces";
 import useSWR, { Fetcher, Key } from "swr";
 import { getConfigEnv } from "./config";
 
-const headers: HeadersInit = {
-  Authorization: `Basic ${btoa(
+const headers = new Headers({
+  Authorization: `Basic ${Buffer.from(
     `${process.env.NEXT_PUBLIC_USERNAME}:${process.env.NEXT_PUBLIC_PASSWORD}`
-  )}`,
+  ).toString("base64")}`,
   "Access-Control-Allow-Origin": "*",
-};
-
+});
 export const lifeStepFetcher: Fetcher<LifeStep[], string> = (...args) => {
   return fetch(...args, {
     headers,
-    mode: "no-cors"
   }).then((res) => res.json());
 };
 
 export const resourceFetcher: Fetcher<Resource[], string> = (...args) => {
   return fetch(...args, {
     headers,
-    mode: "no-cors"
   }).then((res) => res.json());
 };
 

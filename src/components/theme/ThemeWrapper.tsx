@@ -13,7 +13,8 @@ export const DARK_PRIMARY_COLOR = "#EB212E";
 export const LIGHT_PRIMARY_COLOR = "#2E67F8";
 
 export function ThemeWrapper({ children }: { children: any }) {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<"light" | "dark">("dark");
+
   const colorMode = useMemo(
     () => ({
       toggleColorMode: (newMode: "dark" | "light") => {
