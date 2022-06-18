@@ -1,34 +1,6 @@
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
+import { HobbyCard, HobbySwiperCard } from "components/hobbies/HobbyCard";
 import Layout from "components/layout/Layout";
-import Image from "next/image";
-import { ReactNode } from "react";
-
-export function HobbyCard({
-  title,
-  subtitle,
-  imageUrl,
-  alt,
-}: {
-  title: string;
-  subtitle: string;
-  imageUrl: string;
-  alt: string;
-}) {
-  return (
-    <Paper className="p-2 border" elevation={0}>
-      <Typography variant="h4">{title}</Typography>
-      <Typography variant="subtitle1">{subtitle}</Typography>
-      <Image
-        src={imageUrl}
-        alt={alt}
-        objectFit="contain"
-        layout="intrinsic"
-        width={300}
-        height={300}
-      />
-    </Paper>
-  );
-}
 
 export default function Hobbies() {
   return (
@@ -40,7 +12,7 @@ export default function Hobbies() {
         spacing={2}
         justifyContent="center"
       >
-        <Grid item>
+        <Grid item md={4} xs={12}>
           <HobbyCard
             title="Running"
             subtitle="Well, not as fast as BB-8"
@@ -48,7 +20,7 @@ export default function Hobbies() {
             alt="BB-8 running"
           />
         </Grid>
-        <Grid item>
+        <Grid item md={4} xs={12}>
           <HobbyCard
             title="Reading"
             subtitle="To learn, you must"
@@ -56,11 +28,24 @@ export default function Hobbies() {
             alt="Grogu on the letters"
           />
         </Grid>
-        <Grid item>
+        <Grid item md={4} xs={12}>
           <HobbyCard
             title="Movies"
             subtitle="This ideas had to come from somewhere"
             imageUrl="/img/hobbies/movies.gif"
+            alt="This ideas had to come from somewhere"
+          />
+        </Grid>
+        <Grid item md={4} xs={12}>
+          <HobbySwiperCard
+            title="Mate"
+            subtitle="Not a hobby, but I'll take it with me everywhere"
+            imagesUrl={[
+              "/img/mates/mate_in_snow.jpeg",
+              "/img/mates/mate_in_italy.jpeg",
+              "/img/mates/mate_in_sand.jpeg",
+              "/img/mates/mate_in_cliff.jpeg",
+            ]}
             alt="This ideas had to come from somewhere"
           />
         </Grid>
