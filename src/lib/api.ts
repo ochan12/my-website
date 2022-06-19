@@ -40,7 +40,7 @@ export function useStepsByType(stepType: StepType) {
   const { data, error } = useSWR(uid, lifeStepFetcher);
 
   return {
-    steps: data,
+    steps: data ?? [],
     isLoading: !error && !data,
     isError: error,
   };
