@@ -9,7 +9,7 @@
     background-color: rgb(15, 128, 185) !important;
   }
   &--solo_projects {
-    background-color: rgb(15, 128, 185) !important;
+    background-color: #ffe81f !important;
   }
 }
 
@@ -24,7 +24,7 @@
     background-color: rgba(15, 128, 185, 0.2) !important;
   }
   &--solo_projects {
-    background-color: rgba(15, 128, 185, 0.2) !important;
+    background-color: rgba(255, 232, 31, 0.2) !important;
   }
 }
 
@@ -57,12 +57,12 @@
     }
   }
   &--solo_projects {
-    background-color: rgba(15, 128, 185, 0.2) !important;
+    background-color: rgba(255, 232, 31, 0.2) !important;
     cursor: pointer;
     border-radius: 8px;
     border: 1px solid transparent;
     &:hover {
-      border-color: rgba(15, 128, 185, 0.5) !important;
+      border-color: rgba(255, 232, 31, 0.5) !important;
     }
   }
 }
