@@ -3,8 +3,11 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Grid, Typography
+  Grid,
+  IconButton,
+  Typography,
 } from "@mui/material";
+import LinkIcon from "@mui/icons-material/Link";
 import { Project } from "interfaces";
 import { useResources } from "lib/api";
 import Link from "next/link";
@@ -41,6 +44,13 @@ export function StepProject({ project }: { project: Project }) {
       <Grid item xs={12}>
         <Typography sx={{ whiteSpace: "pre-wrap" }} variant="subtitle2">
           {project.name}
+          {project.url && (
+            <a href={project.url}>
+              <IconButton className="py-0">
+                <LinkIcon />
+              </IconButton>
+            </a>
+          )}
         </Typography>
       </Grid>
       <Grid item xs={12}>
