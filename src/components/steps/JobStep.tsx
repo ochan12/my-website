@@ -39,7 +39,7 @@ export function JobStep({ step }: { step: LifeStep }) {
         subheader={`${startDate.toLocaleString("en-GB", dateOptions)} - ${
           step.endTime
             ? endDate.toLocaleString("en-GB", dateOptions)
-            : "Still here!"
+            : "Present"
         }`}
         avatar={
           step.photos?.[0] ? (
