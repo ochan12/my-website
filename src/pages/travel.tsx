@@ -6,10 +6,7 @@ import Head from "next/head";
 import Script from "next/script";
 
 export default function Travel() {
-  const Map = dynamic(
-    () => import("components/maps/Map"), // replace '@components/map' with your component's location
-    { ssr: false } // This line is important. It's what prevents server-side render
-  );
+  const Map = dynamic(() => import("components/maps/Map"), { ssr: false });
 
   return (
     <Layout>
@@ -26,8 +23,13 @@ export default function Travel() {
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossOrigin=""
       ></Script>
-      <Grid container>
-        <Grid item xs={12} height={500}>
+      <Grid
+        container
+        justifyContent={"center"}
+        alignItems="center"
+        height={"100vh"}
+      >
+        <Grid item xs={6} height={500}>
           <Map />
         </Grid>
       </Grid>
