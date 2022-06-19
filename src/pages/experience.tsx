@@ -2,10 +2,11 @@ import { CircularProgress, Grid } from "@mui/material";
 import Layout from "components/layout/Layout";
 import { HeaderStep } from "components/steps/HeaderStep";
 import { JobStep } from "components/steps/JobStep";
+import { ColorModeContext } from "components/theme/ThemeWrapper";
 import { StepType } from "interfaces";
 import { useStepsByType } from "lib/api";
 import Head from "next/head";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SwiperBase from "swiper";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,7 +15,7 @@ export default function Jobs() {
   const { steps, isLoading, isError } = useStepsByType(StepType.JOB);
   const [activeJobIndex, setActiveJob] = useState(2);
   const [swiper, setSwiper] = useState<SwiperBase | null>(null);
-
+  const colorMode = useContext(ColorModeContext);
   const slideTo = (index: number) => swiper?.slideTo(index);
   return (
     <Layout>
@@ -52,7 +53,11 @@ export default function Jobs() {
               <Swiper
                 spaceBetween={10}
                 initialSlide={activeJobIndex}
-                navigation={true}
+                navigation={{
+                  enabled: false,
+                  nextEl: "",
+                  prevEl: "",
+                }}
                 onSwiper={setSwiper}
               >
                 {steps?.map((step, index) => (

@@ -31,7 +31,7 @@ export default function Hobbies() {
         <Grid item md={4} xs={12}>
           <HobbyCard
             title="Movies"
-            subtitle="This ideas had to come from somewhere"
+            subtitle="These ideas had to come from somewhere"
             imageUrl="/img/hobbies/movies.gif"
             alt="This ideas had to come from somewhere"
           />
