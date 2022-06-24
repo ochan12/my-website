@@ -2,9 +2,9 @@ import { Paper, Typography } from "@mui/material";
 import { ColorModeContext } from "components/theme/ThemeWrapper";
 import Image from "next/image";
 import { useContext, useState } from "react";
-import { Navigation } from "swiper";
-import { Swiper as SwiperBase } from "swiper";
+import { Swiper as SwiperBase, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import style from "./HobbyCard.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -21,9 +21,13 @@ export function HobbyCard({
   alt: string;
 }) {
   return (
-    <Paper className="p-2 border" elevation={0}>
-      <Typography variant="h4">{title}</Typography>
-      <Typography variant="subtitle1">{subtitle}</Typography>
+    <Paper className="p-2 border" elevation={0} role="hobby-card">
+      <Typography variant="h4" role="title">
+        {title}
+      </Typography>
+      <Typography variant="subtitle1" role="subtitle">
+        {subtitle}
+      </Typography>
       <div className="text-center">
         <Image
           src={imageUrl}

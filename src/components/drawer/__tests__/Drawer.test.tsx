@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { DrawerHeader } from "../src/components/drawer/DrawerHeader";
-import { DrawerLinks } from "../src/components/drawer/DrawerLinks";
+import { DrawerHeader } from "../DrawerHeader";
+import { DrawerLinks } from "../DrawerLinks";
 
 describe("Drawer", () => {
   it("DrawerHeader", () => {
