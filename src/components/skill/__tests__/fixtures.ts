@@ -1,0 +1,98 @@
+export const resources = [
+  {
+    name: "AWS",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    url: "https://aws.amazon.com/",
+    _id: "aws",
+  },
+  {
+    name: "Elastic",
+    logo: "/img/logos/logo_elastic.png",
+    url: "https://www.elastic.co/",
+    _id: "elastic",
+  },
+  {
+    name: "Firebase",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/46/Touchicon-180.png",
+    url: "https://firebase.google.com/",
+    _id: "firebase",
+  },
+  {
+    name: "Java",
+    logo: "/img/logos/logo_java.png",
+    url: "https://www.java.com/en/",
+    _id: "java",
+  },
+  {
+    name: "Kotlin",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/06/Kotlin_Icon.svg",
+    url: "https://kotlinlang.org/",
+    _id: "kotlin",
+  },
+  {
+    name: "MongoDB",
+    logo: "/img/logos/logo_mongo.svg",
+    url: "https://www.mongodb.com/",
+    _id: "mongodb",
+  },
+  {
+    name: "Nginx",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg",
+    url: "https://www.nginx.com/",
+    _id: "nginx",
+  },
+  {
+    name: "Node.js",
+    logo: "/img/logos/logo_node.png",
+    url: "https://nodejs.org/en/",
+    _id: "node",
+  },
+  {
+    name: "PostgreSQL",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+    url: "https://www.postgresql.org/",
+    _id: "postgresql",
+  },
+  {
+    name: "Python",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+    url: "https://www.python.org/",
+    _id: "python",
+  },
+  {
+    name: "ReactJS",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+    url: "https://reactjs.org/",
+    _id: "react",
+  },
+  {
+    name: "Redis",
+    logo: "/img/logos/logo_redis.png",
+    url: "https://redis.io/",
+    _id: "redis",
+  },
+  {
+    name: "Redux",
+    logo: "/img/logos/logo_redux.svg",
+    url: "https://redux.js.org/",
+    _id: "redux",
+  },
+  {
+    name: "Traefik",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Traefik.logo.png",
+    url: "https://traefik.io/",
+    _id: "traefik",
+  },
+  {
+    name: "TypeScript",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
+    url: "https://www.typescriptlang.org/",
+    _id: "typescript",
+  },
+  {
+    name: "Webpack",
+    logo: "/img/logos/logo_webpack.png",
+    url: "https://webpack.js.org/",
+    _id: "webpack",
+  },
+];

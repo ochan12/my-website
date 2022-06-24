@@ -33,9 +33,9 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 type ResourceMap = { [k: string]: Resource };
 
-function SkillItem(skill: Skill, resourcesMap: ResourceMap) {
+export function SkillItem(skill: Skill, resourcesMap: ResourceMap) {
   return (
-    <ListItem key={skill.name}>
+    <ListItem key={skill.name} role="skill-list-item">
       <ListItemAvatar>
         <Avatar
           variant="rounded"
@@ -49,6 +49,7 @@ function SkillItem(skill: Skill, resourcesMap: ResourceMap) {
           title={resourcesMap[skill.name]?.name}
           alt={skill.name}
           src={resourcesMap[skill.name]?.logo}
+          role="skill-list-item-avatar"
         />
       </ListItemAvatar>
       <ListItemText>
