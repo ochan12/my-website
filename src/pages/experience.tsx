@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CircularProgress,
   Grid
@@ -14,8 +14,12 @@ import { useContext, useMemo, useState } from "react";
 import SwiperBase from "swiper";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import mixpanel from "mixpanel-browser";
 
 export default function Jobs() {
+  useEffect(() => {
+    mixpanel.track("Jobs");
+  }, []);
   const { steps, isLoading } = useStepsByType(StepType.JOB);
   const hobbySteps = useStepsByType(StepType.HOBBY);
   const [activeJobIndex, setActiveJob] = useState(2);

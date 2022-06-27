@@ -6,8 +6,12 @@ import { Resource } from "interfaces";
 import { useResources } from "lib/api";
 import { useBackendSkills, useDbSkills, useFrontendSkills, useOtherSkills, useServicesSkills } from "lib/hooks";
 import { useEffect, useState } from "react";
+import mixpanel from "mixpanel-browser";
 
 export default function Skills() {
+  useEffect(() => {
+    mixpanel.track("Skills");
+  }, []);
   const backendSkills = useBackendSkills();
   const frontendSkills = useFrontendSkills();
   const dbSkills = useDbSkills();

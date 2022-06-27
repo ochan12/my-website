@@ -1,11 +1,13 @@
-import React from "react";
-import { useTheme } from "@mui/material";
+import React, { useEffect } from "react";
 import HomeComponent from "components/home/HomeComponent";
 import Layout, { siteTitle } from "components/layout/Layout";
+import mixpanel from "mixpanel-browser";
 import Head from "next/head";
 
 export default function Home() {
-  const theme = useTheme();
+  useEffect(() => {
+    mixpanel.track("Home");
+  }, []);
   return (
     <Layout home>
       <Head>

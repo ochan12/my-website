@@ -4,7 +4,7 @@ type Environment = {
 
 const configs: Record<string, Environment> = {
   development: {
-    apiUrl: "http://localhost:8080/",
+    apiUrl: "https://lifesteps-api.herokuapp.com/",
   },
   production: {
     apiUrl: "https://lifesteps-api.herokuapp.com/",
