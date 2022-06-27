@@ -1,4 +1,4 @@
-import { LifeStep, Resource, StepType } from "interfaces";
+import { Contact, LifeStep, Person, Resource, StepType } from "interfaces";
 import useSWR, { Fetcher, Key } from "swr";
 import { getConfigEnv } from "./config";
 
@@ -8,6 +8,7 @@ const headers = new Headers({
   ).toString("base64")}`,
   "Access-Control-Allow-Origin": "*",
 });
+
 export const lifeStepFetcher: Fetcher<LifeStep[], string> = (...args) => {
   return fetch(...args, {
     headers,
@@ -15,6 +16,17 @@ export const lifeStepFetcher: Fetcher<LifeStep[], string> = (...args) => {
 };
 
 export const resourceFetcher: Fetcher<Resource[], string> = (...args) => {
+  return fetch(...args, {
+    headers,
+  }).then((res) => res.json());
+};
+export const contactFetcher: Fetcher<Contact, string> = (...args) => {
+  return fetch(...args, {
+    headers,
+  }).then((res) => res.json());
+};
+
+export const personFetcher: Fetcher<Person, string> = (...args) => {
   return fetch(...args, {
     headers,
   }).then((res) => res.json());
@@ -54,6 +66,26 @@ export function useResources(resources: string[]) {
 
   return {
     resources: data,
+    isLoading: !error && !data,
+    isError: error,
+  };
+}
+
+export function useContactInformation() {
+  const uid: Key = `${getConfigEnv().apiUrl}contact`;
+  const { data, error } = useSWR(uid, contactFetcher);
+  return {
+    contact: data,
+    isLoading: !error && !data,
+    isError: error,
+  };
+}
+
+export function usePersonInformation() {
+  const uid: Key = `${getConfigEnv().apiUrl}person`;
+  const { data, error } = useSWR(uid, personFetcher);
+  return {
+    person: data,
     isLoading: !error && !data,
     isError: error,
   };

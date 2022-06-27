@@ -1,10 +1,10 @@
+import React from "react";
 import { Paper, Typography } from "@mui/material";
 import { ColorModeContext } from "components/theme/ThemeWrapper";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { Swiper as SwiperBase, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import style from "./HobbyCard.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";

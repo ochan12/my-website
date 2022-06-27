@@ -65,3 +65,17 @@ export interface GeoJSON {
     };
   }[];
 }
+
+export interface Contact {
+  email: string;
+  repository: string;
+  linkedIn: string;
+  phone: string;
+}
+
+export interface Person {
+  name: string;
+  surname: string;
+  contact?: Contact;
+  birthDate: number;
+}

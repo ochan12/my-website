@@ -36,3 +36,11 @@ export function useServicesSkills(): Skill[] {
     { name: "aws", experience: 60 },
   ];
 }
+export function useHomeLinks(): { link: string; text: string }[] {
+  return [
+    { link: "/experience", text: "Job experience" },
+    { link: "/travel", text: "Trips" },
+    { link: "/skills", text: "Skills" },
+    { link: "/hobbies", text: "Hobbies" },
+  ];
+}
