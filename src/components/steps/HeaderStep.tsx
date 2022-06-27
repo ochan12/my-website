@@ -1,3 +1,4 @@
+import React from "react";
 import { Avatar, Grid } from "@mui/material";
 import { LifeStep } from "interfaces";
 import style from "./JobStep.module.scss";

@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import Layout from "components/layout/Layout";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Script from "next/script";
+import mixpanel from "mixpanel-browser";
 
 export default function Travel() {
   const Map = dynamic(() => import("components/maps/Map"), { ssr: false });
-
+  useEffect(() => {
+    mixpanel.track("Travel");
+  }, []);
   return (
     <Layout>
       <Head>

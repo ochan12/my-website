@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import { HobbyCard, HobbySwiperCard } from "components/hobbies/HobbyCard";
 import Layout from "components/layout/Layout";
+import mixpanel from "mixpanel-browser";
 
 export default function Hobbies() {
+  useEffect(() => {
+    mixpanel.track("Hobbies");
+  }, []);
   return (
     <Layout>
       <Grid
