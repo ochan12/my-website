@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from "react";
+import React, { ReactNode, useContext, useMemo } from "react";
 import { Grid, Skeleton, useTheme } from "@mui/material";
 import { usePersonInformation } from "lib/api";
 import differenceInyears from "date-fns/differenceInYears";
@@ -12,31 +12,40 @@ function LoadingText({
   content: string | ReactNode;
   loading: boolean;
 }) {
-  return loading ? <Skeleton variant="text" width={100} /> : <>{content}</>;
+  return loading ? (
+    <Skeleton variant="text" className="text-center" />
+  ) : (
+    <>{content}</>
+  );
 }
 
 export function PersonalData() {
   const { person, isLoading } = usePersonInformation();
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
+  const loading = useMemo(
+    () => !!!person || isLoading,
+    [person, isLoading]
+  );
   return (
     <Grid
       container
       alignItems={"center"}
+      justifyContent="center"
       sx={{
         color: theme.palette.primary[colorMode.theme],
       }}
       className="font-mono text-center align-middle"
     >
-      <Grid item xs={12}>
+      <Grid item xs={12} className="text-center">
         <LoadingText
-          loading={isLoading || !person}
+          loading={loading}
           content={`Full name: ${person?.name} ${person?.surname}`}
         />
       </Grid>
       <Grid item xs={12}>
         <LoadingText
-          loading={isLoading || !person}
+          loading={loading}
           content={` Age: ${differenceInyears(
             new Date(),
             person?.birthDate!
@@ -45,7 +54,7 @@ export function PersonalData() {
       </Grid>
       <Grid item xs={12}>
         <LoadingText
-          loading={isLoading || !person}
+          loading={loading}
           content={
             <>
               Birthplace: Córdoba,{" "}
@@ -61,7 +70,7 @@ export function PersonalData() {
       </Grid>
       <Grid item xs={12}>
         <LoadingText
-          loading={isLoading || !person}
+          loading={loading}
           content={
             <>
               Now: Stockholm,{" "}

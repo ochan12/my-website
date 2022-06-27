@@ -89,7 +89,7 @@ export default function HomeComponent() {
     >
       <Grid item xs={12} className="text-center">
         <Grid container justifyContent={"center"}>
-          <Grid item xs={6} className="text-center">
+          <Grid item xs={12} className="text-center">
             <Image
               priority
               src="/img/mateo_barcelona.jpeg"
@@ -100,8 +100,8 @@ export default function HomeComponent() {
               objectFit={"cover"}
             />
           </Grid>
+          <Grid item xs={3} className="text-center">
             <PersonalData />
-          <Grid item xs={6}>
           </Grid>
         </Grid>
       </Grid>
