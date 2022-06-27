@@ -30,9 +30,9 @@ export default function Travel() {
         container
         justifyContent={"center"}
         alignItems="center"
-        height={"100vh"}
+        height={"80vh"}
       >
-        <Grid item xs={6} height={500}>
+        <Grid item xs={10} md={10} height={"80vh"}>
           <Map />
         </Grid>
       </Grid>

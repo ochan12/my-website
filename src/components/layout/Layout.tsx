@@ -12,7 +12,7 @@ export default function Layout({ children, home }: any) {
       elevation={0}
       sx={{
         borderRadius: 0,
-        minHeight: "100vh"
+        minHeight: "100vh",
       }}
     >
       <Head>
@@ -28,11 +28,18 @@ export default function Layout({ children, home }: any) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Grid container justifyContent={"space-between"} height={"100%"}>
+      <Grid container justifyContent={"space-between"}>
         <Grid item xs={2}>
           <AppDrawer />
         </Grid>
-        <Grid item xs={10}>
+        <Grid
+          item
+          xs={10}
+          marginTop={10}
+          sx={{
+            minHeight: "100vh",
+          }}
+        >
           {children}
         </Grid>
       </Grid>

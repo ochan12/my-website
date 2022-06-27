@@ -4,7 +4,13 @@ import Layout from "components/layout/Layout";
 import SkillCard from "components/skill/SkillCard";
 import { Resource } from "interfaces";
 import { useResources } from "lib/api";
-import { useBackendSkills, useDbSkills, useFrontendSkills, useOtherSkills, useServicesSkills } from "lib/hooks";
+import {
+  useBackendSkills,
+  useDbSkills,
+  useFrontendSkills,
+  useOtherSkills,
+  useServicesSkills,
+} from "lib/hooks";
 import { useEffect, useState } from "react";
 import mixpanel from "mixpanel-browser";
 
@@ -43,20 +49,40 @@ export default function Skills() {
   return (
     <Layout>
       <Grid container spacing={2} padding={2}>
-        <Grid item xs={4}>
-          <SkillCard skills={backendSkills} resourcesMap={resourcesMap} title="Backend" />
+        <Grid item md={4} xs={12}>
+          <SkillCard
+            skills={backendSkills}
+            resourcesMap={resourcesMap}
+            title="Backend"
+          />
         </Grid>
-        <Grid item xs={4}>
-          <SkillCard skills={frontendSkills} resourcesMap={resourcesMap} title="Frontend" />
+        <Grid item md={4} xs={12}>
+          <SkillCard
+            skills={frontendSkills}
+            resourcesMap={resourcesMap}
+            title="Frontend"
+          />
         </Grid>
-        <Grid item xs={4}>
-          <SkillCard skills={dbSkills} resourcesMap={resourcesMap} title="Search" />
+        <Grid item md={4} xs={12}>
+          <SkillCard
+            skills={dbSkills}
+            resourcesMap={resourcesMap}
+            title="Search"
+          />
         </Grid>
-        <Grid item xs={4}>
-          <SkillCard skills={otherSkills} resourcesMap={resourcesMap} title="Tools" />
+        <Grid item md={4} xs={12}>
+          <SkillCard
+            skills={otherSkills}
+            resourcesMap={resourcesMap}
+            title="Tools"
+          />
         </Grid>
-        <Grid item xs={4}>
-          <SkillCard skills={serviceSkills} resourcesMap={resourcesMap} title="Services" />
+        <Grid item md={4} xs={12}>
+          <SkillCard
+            skills={serviceSkills}
+            resourcesMap={resourcesMap}
+            title="Services"
+          />
         </Grid>
       </Grid>
     </Layout>
