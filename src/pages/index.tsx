@@ -1,8 +1,8 @@
-import Head from "next/head";
+import React from "react";
+import { useTheme } from "@mui/material";
+import HomeComponent from "components/home/HomeComponent";
 import Layout, { siteTitle } from "components/layout/Layout";
-import Link from "next/link";
-import Image from "next/image";
-import { Grid, Typography, useTheme } from "@mui/material";
+import Head from "next/head";
 
 export default function Home() {
   const theme = useTheme();
@@ -11,62 +11,7 @@ export default function Home() {
       <Head>
         <title className="text-3xl font-bold underline">{siteTitle}</title>
       </Head>
-      <Grid
-        container
-        justifyContent="space-between"
-        alignContent="center"
-        spacing={4}
-        className="h-screen"
-      >
-        <Grid item xs={12} className="text-center">
-          <Image
-            priority
-            src="/img/mateo_barcelona.jpeg"
-            className={"rounded-full"}
-            height={200}
-            width={200}
-            alt={"Mateo"}
-            objectFit={"cover"}
-          />
-        </Grid>
-        <Grid item xs={12} className="text-center">
-          <Typography
-            variant="body1"
-            className="text-lg text-opacity-50 max-w-lg text-center margin-auto"
-          >
-            Hello there!{" "}
-            <Image
-              src={`/img/icons/${
-                theme.palette.mode === "light" ? "obi_wan.svg" : "emperor.svg"
-              }`}
-              alt="Hello there..."
-              title="Hello there..."
-              width={20}
-              height={20}
-            />{" "}
-            I&apos;m Mateo and for some misterious reason (or maybe not) you
-            ended up in my website. You might want to check out:
-          </Typography>
-        </Grid>
-        <Grid item xs={12} className="text-center">
-          <ul
-            role="list"
-            className="marker:text-sky-400 list-disc pl-5 space-y-3 list-inside"
-          >
-            <li className="list-item">
-              <Link href={"/experience"}>Where I worked?</Link>
-            </li>
-            <li className="list-item">
-              <Link href={"/travel"}>Where I travelled?</Link>
-            </li>
-            <li className="list-item">
-              <Link href={"/hobbies"}>
-                What do I do while I&apos;m not coding
-              </Link>
-            </li>
-          </ul>
-        </Grid>
-      </Grid>
+      <HomeComponent />
     </Layout>
   );
 }

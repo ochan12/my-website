@@ -1,6 +1,7 @@
 import { Grid, Paper, useTheme } from "@mui/material";
 import AppDrawer from "components/drawer/Drawer";
 import Head from "next/head";
+import React from "react";
 
 export const siteTitle = "Mateo";
 

@@ -1,6 +1,5 @@
-import { Avatar, Grid, Typography } from "@mui/material";
+import { Avatar, Grid } from "@mui/material";
 import { LifeStep } from "interfaces";
-import Image from "next/image";
 import style from "./JobStep.module.scss";
 
 export function HeaderStep({
