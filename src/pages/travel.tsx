@@ -1,8 +1,8 @@
+import React from "react";
 import { Grid } from "@mui/material";
 import Layout from "components/layout/Layout";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-
 import Script from "next/script";
 
 export default function Travel() {

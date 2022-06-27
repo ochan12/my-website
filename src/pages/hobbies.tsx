@@ -1,3 +1,4 @@
+import React from "react";
 import { Grid } from "@mui/material";
 import { HobbyCard, HobbySwiperCard } from "components/hobbies/HobbyCard";
 import Layout from "components/layout/Layout";
