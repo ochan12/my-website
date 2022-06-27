@@ -29,7 +29,7 @@ export function PersonalData() {
         Birthplace: Córdoba,{" "}
         <Image
           alt="Argentina"
-          src="http://purecatamphetamine.github.io/country-flag-icons/3x2/AR.svg"
+          src="https://purecatamphetamine.github.io/country-flag-icons/3x2/AR.svg"
           width={30}
           height={20}
         />
@@ -38,7 +38,7 @@ export function PersonalData() {
         Now: Stockholm,{" "}
         <Image
           alt="Sweden"
-          src="http://purecatamphetamine.github.io/country-flag-icons/3x2/SE.svg"
+          src="https://purecatamphetamine.github.io/country-flag-icons/3x2/SE.svg"
           width={30}
           height={20}
         />
