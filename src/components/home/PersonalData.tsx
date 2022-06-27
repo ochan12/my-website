@@ -37,7 +37,7 @@ export function PersonalData() {
       <Grid item xs={12}>
         Now: Stockholm,{" "}
         <Image
-          alt="Argentina"
+          alt="Sweden"
           src="http://purecatamphetamine.github.io/country-flag-icons/3x2/SE.svg"
           width={30}
           height={20}
