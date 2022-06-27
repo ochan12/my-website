@@ -85,7 +85,6 @@ export default function HomeComponent() {
       justifyContent="space-around"
       alignContent="center"
       spacing={4}
-      className="h-screen"
     >
       <Grid item xs={12} className="text-center">
         <Grid container justifyContent={"center"}>
@@ -100,7 +99,7 @@ export default function HomeComponent() {
               objectFit={"cover"}
             />
           </Grid>
-          <Grid item xs={3} className="text-center">
+          <Grid item xs={12} className="text-center">
             <PersonalData />
           </Grid>
         </Grid>
