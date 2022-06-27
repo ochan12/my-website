@@ -9,6 +9,7 @@ module.exports = {
       "user-images.githubusercontent.com",
       "webpack.js.org",
       "en.wikipedia.org",
+      "purecatamphetamine.github.io",
     ],
   },
 };
