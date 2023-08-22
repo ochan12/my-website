@@ -22,7 +22,7 @@ export default function Jobs() {
   }, []);
   const { steps, isLoading } = useStepsByType(StepType.JOB);
   const hobbySteps = useStepsByType(StepType.HOBBY);
-  const [activeJobIndex, setActiveJob] = useState(2);
+  const [activeJobIndex, setActiveJob] = useState(3);
   const [swiper, setSwiper] = useState<SwiperBase | null>(null);
   const slideTo = (index: number) => swiper?.slideTo(index);
   const {theme} = useContext(ColorModeContext)
