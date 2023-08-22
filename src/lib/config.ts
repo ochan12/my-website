@@ -4,7 +4,7 @@ type Environment = {
 
 const configs: Record<string, Environment> = {
   development: {
-    apiUrl: "https://lifesteps-api-riggoch.koyeb.app",
+    apiUrl: "http://localhost:8080",
   },
   production: {
     apiUrl: "https://lifesteps-api-riggoch.koyeb.app",
