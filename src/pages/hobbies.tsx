@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
+import Head from "next/head";
 import { HobbyCard, HobbySwiperCard } from "components/hobbies/HobbyCard";
 import Layout from "components/layout/Layout";
 import mixpanel from "mixpanel-browser";
@@ -10,6 +11,9 @@ export default function Hobbies() {
   }, []);
   return (
     <Layout>
+      <Head>
+        <title>Hobbies</title>
+      </Head>
       <Grid
         container
         alignItems={"center"}

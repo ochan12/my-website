@@ -13,6 +13,7 @@ import {
 } from "lib/hooks";
 import { useEffect, useState } from "react";
 import mixpanel from "mixpanel-browser";
+import Head from "next/head";
 
 export default function Skills() {
   useEffect(() => {
@@ -48,6 +49,11 @@ export default function Skills() {
   }, [resources, isError, isLoading]);
   return (
     <Layout>
+      <Head>
+        <title>
+          Skills
+        </title>
+      </Head>
       <Grid container spacing={2} padding={2}>
         <Grid item md={4} xs={12}>
           <SkillCard
