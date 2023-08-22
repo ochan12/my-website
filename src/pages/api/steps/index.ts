@@ -3,7 +3,7 @@ import { Person } from '../../../interfaces'
 import { getConfigEnv } from 'lib/config';
 import { NextApiRequestQuery } from 'next/dist/server/api-utils';
 
-type ResourcesQuery = NextApiRequestQuery & {query: {ids: string[]}} 
+type StepsQuery = NextApiRequestQuery & {query: {step: string}} 
 
 const headers = new Headers({
   Authorization: `Basic ${Buffer.from(
@@ -13,10 +13,10 @@ const headers = new Headers({
 });
 
 export default async function handler(
-  req: ResourcesQuery,
+  req: StepsQuery,
   res: NextApiResponse<Person[]>
 ) {
-    const {ids} = req.query
-    const resources = await fetch(`${getConfigEnv().apiUrl}resources?ids=${ids}`, {headers}).then(res => res.json());
+    const {step} = req.query
+    const resources = await fetch(`${getConfigEnv().apiUrl}life/${step}`, {headers}).then(res => res.json());
     res.status(200).json(resources)
 } 

@@ -2,34 +2,19 @@ import { Contact, LifeStep, Person, Resource, StepType } from "interfaces";
 import useSWR, { Fetcher, Key } from "swr";
 import { getConfigEnv } from "./config";
 
-const headers = new Headers({
-  Authorization: `Basic ${Buffer.from(
-    `${process.env.NEXT_PUBLIC_USERNAME}:${process.env.NEXT_PUBLIC_PASSWORD}`
-  ).toString("base64")}`,
-  "Access-Control-Allow-Origin": "*",
-});
-
 export const lifeStepFetcher: Fetcher<LifeStep[], string> = (...args) => {
-  return fetch(...args, {
-    headers,
-  }).then((res) => res.json());
+  return fetch(...args).then((res) => res.json());
 };
 
 export const resourceFetcher: Fetcher<Resource[], string> = (...args) => {
-  return fetch(...args, {
-    headers,
-  }).then((res) => res.json());
+  return fetch(...args).then((res) => res.json());
 };
 export const contactFetcher: Fetcher<Contact, string> = (...args) => {
-  return fetch(...args, {
-    headers,
-  }).then((res) => res.json());
+  return fetch(...args).then((res) => res.json());
 };
 
 export const personFetcher: Fetcher<Person, string> = (...args) => {
-  return fetch(...args, {
-    headers,
-  }).then((res) => res.json());
+  return fetch(...args).then((res) => res.json());
 };
 
 const getUrlFromStepType = (stepType: StepType) => {
@@ -46,7 +31,7 @@ const getUrlFromStepType = (stepType: StepType) => {
 };
 
 export function useStepsByType(stepType: StepType) {
-  const uid: Key = `${getConfigEnv().apiUrl}life/${getUrlFromStepType(
+  const uid: Key = `/api/steps?step=${getUrlFromStepType(
     stepType
   )}`;
   const { data, error } = useSWR(uid, lifeStepFetcher);
@@ -59,9 +44,7 @@ export function useStepsByType(stepType: StepType) {
 }
 
 export function useResources(resources: string[]) {
-  const uid: Key = `${getConfigEnv().apiUrl}resources?ids=${resources.join(
-    ","
-  )}`;
+  const uid: Key = `/api/resources?ids=${resources.join(",")}`;
   const { data, error } = useSWR(uid, resourceFetcher);
 
   return {
@@ -72,7 +55,7 @@ export function useResources(resources: string[]) {
 }
 
 export function useContactInformation() {
-  const uid: Key = `${getConfigEnv().apiUrl}contact`;
+  const uid: Key = `/api/contact`;
   const { data, error } = useSWR(uid, contactFetcher);
   return {
     contact: data,
@@ -82,7 +65,7 @@ export function useContactInformation() {
 }
 
 export function usePersonInformation() {
-  const uid: Key = `${getConfigEnv().apiUrl}person`;
+  const uid: Key = `/api/person`;
   const { data, error } = useSWR(uid, personFetcher);
   return {
     person: data,
