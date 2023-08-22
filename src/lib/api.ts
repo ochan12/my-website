@@ -1,6 +1,5 @@
 import { Contact, LifeStep, Person, Resource, StepType } from "interfaces";
 import useSWR, { Fetcher, Key } from "swr";
-import { getConfigEnv } from "./config";
 
 export const lifeStepFetcher: Fetcher<LifeStep[], string> = (...args) => {
   return fetch(...args).then((res) => res.json());

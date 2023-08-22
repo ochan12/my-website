@@ -17,6 +17,6 @@ export default async function handler(
   res: NextApiResponse<Person[]>
 ) {
     const {step} = req.query
-    const resources = await fetch(`${getConfigEnv().apiUrl}life/${step}`, {headers}).then(res => res.json());
+    const resources = await fetch(`${getConfigEnv().apiUrl}/life/${step}`, {headers}).then(res => res.json());
     res.status(200).json(resources)
 } 
