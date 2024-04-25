@@ -7,7 +7,7 @@ const configs: Record<string, Environment> = {
     apiUrl: "http://localhost:8080",
   },
   production: {
-    apiUrl: "https://lifesteps-api-riggoch.koyeb.app",
+    apiUrl: "http://api.ochandorena.dev",
   },
 };
 
