@@ -7,7 +7,7 @@ const configs: Record<string, Environment> = {
     apiUrl: "http://localhost:8080",
   },
   production: {
-    apiUrl: "http://api.ochandorena.dev",
+    apiUrl: "https://api.ochandorena.dev",
   },
 };
 
