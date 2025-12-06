@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -42,6 +45,5 @@
     "ts-jest": "^28.0.5",
     "typescript": "^4.7.3"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

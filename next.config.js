@@ -10,6 +10,7 @@ module.exports = {
       "webpack.js.org",
       "en.wikipedia.org",
       "purecatamphetamine.github.io",
+      "go.dev",
     ],
   },
 };
