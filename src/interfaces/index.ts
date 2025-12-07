@@ -20,7 +20,7 @@ export interface Resource {
   name: string;
   logo: string;
   url: string;
-  _id: string;
+  id: string;
 }
 
 export interface Project {

@@ -25,7 +25,7 @@ export default function Skills() {
   const otherSkills = useOtherSkills();
   const serviceSkills = useServicesSkills();
   const [resourcesMap, setResourceMap] = useState<{ [k: string]: Resource }>(
-    {}
+    {},
   );
   const { resources, isLoading, isError } = useResources([
     ...backendSkills.map((s) => s.name),
@@ -39,10 +39,11 @@ export default function Skills() {
       const reducedResources =
         resources?.reduce<{ [k: string]: Resource }>(
           (resource, currentValue) => {
-            resource[currentValue._id] = currentValue;
+            resource[currentValue.id] = currentValue;
+            console.log(currentValue);
             return resource;
           },
-          {}
+          {},
         ) ?? {};
       setResourceMap(reducedResources);
     }
@@ -50,9 +51,7 @@ export default function Skills() {
   return (
     <Layout>
       <Head>
-        <title>
-          Skills
-        </title>
+        <title>Skills</title>
       </Head>
       <Grid container spacing={2} padding={2}>
         <Grid size={{ md: 4, xs: 12 }}>

@@ -39,6 +39,8 @@ export default function ResourceList({
 
   if (isLoading) return <LinearProgress className="m-4" color="primary" />;
 
+  console.log({ resources });
+
   return (
     <Grid
       container
