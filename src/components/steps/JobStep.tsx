@@ -45,7 +45,9 @@ export function JobStep({ step }: { step: LifeStep }) {
                   ? "rgba(255, 232, 31, 0.2)"
                   : stepStylePrefix === "tracab"
                     ? "rgba(92, 172, 113, 0.2)"
-                    : "rgba(255, 255, 255, 0.1)",
+                    : stepStylePrefix === "insurely"
+                      ? "rgba(33, 49, 35, 0.2)"
+                      : "rgba(255, 255, 255, 0.1)",
       }}
       elevation={0}
     >
@@ -66,6 +68,7 @@ export function JobStep({ step }: { step: LifeStep }) {
                 minHeight: 30,
                 objectFit: "contain",
                 margin: "auto",
+                display: "block",
               }}
             />
           ) : (
@@ -81,7 +84,9 @@ export function JobStep({ step }: { step: LifeStep }) {
                         ? "bg-solo-projects"
                         : stepStylePrefix === "tracab"
                           ? "bg-tracab"
-                          : ""
+                          : stepStylePrefix === "insurely"
+                            ? "bg-insurely"
+                            : ""
               }`}
             >
               {step.name
@@ -95,10 +100,10 @@ export function JobStep({ step }: { step: LifeStep }) {
       <CardContent>
         <Typography variant="body2">{step.description}</Typography>
         <ResourceList
-          resourcesList={step.projects.flatMap((p) => p.resources)}
+          resourcesList={(step.projects ?? []).flatMap((p) => p.resources)}
         />
         <Grid container spacing={4}>
-          {step.projects.map((s, index) => (
+          {(step.projects ?? []).map((s, index) => (
             <Grid size={{ xs: 12 }} key={index}>
               <StepProject project={s} />
             </Grid>

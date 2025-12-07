@@ -6,18 +6,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'star-wars-dark': '#eb212e',
-        'star-wars-light': '#2e67f8',
-        cruncho: 'rgb(236, 75, 68)',
-        'reputacion-digital': 'rgb(16, 89, 118)',
-        qbit: 'rgb(15, 128, 185)',
-        'solo-projects': '#ffe81f',
-        tracab: '#5cac71',
+        "star-wars-dark": "#eb212e",
+        "star-wars-light": "#2e67f8",
+        cruncho: "rgb(236, 75, 68)",
+        "reputacion-digital": "rgb(16, 89, 118)",
+        qbit: "rgb(15, 128, 185)",
+        "solo-projects": "#ffe81f",
+        tracab: "#5cac71",
+        insurely: "rgb(33, 49, 35)",
       },
       fontFamily: {
-        'star-wars': ['StarWarsGlyph', 'sans-serif'],
+        "star-wars": ["StarWarsGlyph", "sans-serif"],
       },
     },
   },
   plugins: [],
-}
+};

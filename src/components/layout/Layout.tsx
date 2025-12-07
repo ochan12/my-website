@@ -13,6 +13,7 @@ export default function Layout({ children, home }: any) {
       sx={{
         borderRadius: 0,
         minHeight: "100vh",
+        bgcolor: "background.default",
       }}
     >
       <Grid container justifyContent={"space-between"}>
@@ -24,6 +25,7 @@ export default function Layout({ children, home }: any) {
           marginTop={10}
           sx={{
             minHeight: "100vh",
+            bgcolor: "background.default",
           }}
         >
           {children}

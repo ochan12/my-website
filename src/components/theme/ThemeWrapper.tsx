@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 
 export const ColorModeContext = React.createContext<{
   toggleColorMode: (newMode: "dark" | "light") => void;
@@ -22,7 +22,7 @@ export function ThemeWrapper({ children }: { children: any }) {
       },
       theme: mode,
     }),
-    [mode]
+    [mode],
   );
   const theme = useMemo(
     () =>
@@ -44,9 +44,22 @@ export function ThemeWrapper({ children }: { children: any }) {
             light: LIGHT_PRIMARY_COLOR,
             dark: DARK_PRIMARY_COLOR,
           },
+          background: {
+            default: mode === "light" ? "#e0e0e0" : "#121212",
+            paper: mode === "light" ? "#f5f5f5" : "#1e1e1e",
+          },
+        },
+        components: {
+          MuiCssBaseline: {
+            styleOverrides: {
+              body: {
+                backgroundColor: mode === "light" ? "#d0d0d0" : "#121212",
+              },
+            },
+          },
         },
       }),
-    [mode]
+    [mode],
   );
   return (
     <ThemeProvider theme={theme}>
