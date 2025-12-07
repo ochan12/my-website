@@ -17,14 +17,8 @@ export default async function handler(
   req: ResourcesQuery,
   res: NextApiResponse<Person[]>,
 ) {
-  console.log("Fetching contacts...");
-  console.log("Headers:", headers);
   const resources = await fetch(`${getConfigEnv().apiUrl}/contact`, {
     headers,
-  }).then(async (res) => {
-    console.log("status", res.status);
-    console.log("body", await res.text());
-    return res.json();
-  });
+  }).then((res) => res.json());
   res.status(200).json(resources);
 }
