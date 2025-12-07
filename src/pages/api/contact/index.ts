@@ -1,22 +1,25 @@
-import { NextApiResponse, NextApiRequest } from 'next'
-import { Person } from '../../../interfaces'
-import { getConfigEnv } from 'lib/config';
-import { NextApiRequestQuery } from 'next/dist/server/api-utils';
+import { NextApiResponse } from "next";
+import { Person } from "../../../interfaces";
+import { getConfigEnv } from "lib/config";
+import { NextApiRequestQuery } from "next/dist/server/api-utils";
 
-type ResourcesQuery = NextApiRequestQuery & {query: {ids: string[]}} 
+type ResourcesQuery = NextApiRequestQuery & { query: { ids: string[] } };
 
 const headers = new Headers({
-    Authorization: `Basic ${Buffer.from(
-      `${process.env.NEXT_PUBLIC_USERNAME}:${process.env.NEXT_PUBLIC_PASSWORD}`
-    ).toString("base64")}`,
-    "Access-Control-Allow-Origin": "*",
-  });
-  
+  Authorization: `Basic ${Buffer.from(
+    `${process.env.NEXT_PUBLIC_USERNAME}:${process.env.NEXT_PUBLIC_PASSWORD}`,
+  ).toString("base64")}`,
+  "Access-Control-Allow-Origin": "*",
+});
 
 export default async function handler(
   req: ResourcesQuery,
-  res: NextApiResponse<Person[]>
+  res: NextApiResponse<Person[]>,
 ) {
-    const resources = await fetch(`${getConfigEnv().apiUrl}/contact`, {headers}).then(res => res.json());
-    res.status(200).json(resources)
-} 
+  console.log("Fetching contacts...");
+  console.log("Headers:", headers);
+  const resources = await fetch(`${getConfigEnv().apiUrl}/contact`, {
+    headers,
+  }).then((res) => res.json());
+  res.status(200).json(resources);
+}
