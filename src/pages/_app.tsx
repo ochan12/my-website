@@ -4,6 +4,7 @@ import mixpanel from "mixpanel-browser";
 import "styles/global.css";
 import "styles/fonts/fonts.css";
 import Head from "next/head";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 mixpanel.init(process.env.NEXT_PUBLIC_ANALYTICS!, { debug: true });
 
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }: any) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <SpeedInsights />
       <ThemeWrapper>
         <Component {...pageProps} />
       </ThemeWrapper>
