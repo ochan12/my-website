@@ -20,6 +20,11 @@ export default async function handler(
   console.log("Headers:", headers);
   const resources = await fetch(`${getConfigEnv().apiUrl}/contact`, {
     headers,
-  }).then((res) => res.json());
+  }).then((res) => {
+    console.log("status", res.status);
+    console.log("headers", res.headers);
+    console.log("body", res.body);
+    return res.json();
+  });
   res.status(200).json(resources);
 }
