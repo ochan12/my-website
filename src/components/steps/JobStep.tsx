@@ -99,7 +99,7 @@ export function JobStep({ step }: { step: LifeStep }) {
         />
         <Grid container spacing={4}>
           {step.projects.map((s, index) => (
-            <Grid size={{ xs: 12, sm: 6 }} key={index}>
+            <Grid size={{ xs: 12 }} key={index}>
               <StepProject project={s} />
             </Grid>
           ))}

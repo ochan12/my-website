@@ -15,11 +15,7 @@ function ProjectDescription(project: Project) {
       {project.resources && resources && (
         <Grid container spacing={1} className="mt-2">
           {resources.map((resource, index) => (
-            <Grid
-              key={index}
-              size={{ xs: 6, sm: 4, md: 2.4 }}
-              className="text-center"
-            >
+            <Grid key={index} size={{ xs: 1 }} className="text-center">
               <Typography variant="caption">
                 <Link
                   href={resource.url}
