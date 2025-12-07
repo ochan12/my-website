@@ -10,6 +10,7 @@ const headers = new Headers({
     `${process.env.NEXT_PUBLIC_USERNAME}:${process.env.NEXT_PUBLIC_PASSWORD}`,
   ).toString("base64")}`,
   "Access-Control-Allow-Origin": "*",
+  referer: "ochandorena.dev",
 });
 
 export default async function handler(
