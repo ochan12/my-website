@@ -1,7 +1,8 @@
 import { ThemeWrapper } from "components/theme/ThemeWrapper";
 import React from "react";
 import mixpanel from "mixpanel-browser";
-import "styles/global.scss";
+import "styles/global.css";
+import "styles/fonts/fonts.css";
 import Head from "next/head";
 
 mixpanel.init(process.env.NEXT_PUBLIC_ANALYTICS!, { debug: true });

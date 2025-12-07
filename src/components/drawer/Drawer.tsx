@@ -7,7 +7,7 @@ import { DrawerLinks } from "./DrawerLinks";
 export function getIconImage(
   fileName: string,
   height = 30,
-  fileExtension = "svg"
+  fileExtension = "svg",
 ) {
   return (
     <Image
@@ -27,13 +27,13 @@ export default function AppDrawer() {
       flexDirection={"column"}
       justifyContent={"center"}
     >
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <DrawerHeader />
       </Grid>
-      <Grid item>
+      <Grid>
         <Divider />
       </Grid>
-      <Grid item justifyContent={"center"}>
+      <Grid justifyContent={"center"}>
         <DrawerLinks />
       </Grid>
     </Grid>

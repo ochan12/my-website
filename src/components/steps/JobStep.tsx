@@ -4,12 +4,13 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Grid, Typography
+  Grid,
+  Typography,
 } from "@mui/material";
 import ResourceList from "components/resources/ResourceList";
 import { LifeStep } from "interfaces";
 import { useMemo, useState } from "react";
-import style from "./JobStep.module.scss";
+
 import { StepProject } from "./StepProject";
 
 export function JobStep({ step }: { step: LifeStep }) {
@@ -17,7 +18,7 @@ export function JobStep({ step }: { step: LifeStep }) {
     {
       startDate: new Date(step.initialTime),
       endDate: new Date(step.endTime),
-    }
+    },
   );
 
   const dateOptions: Intl.DateTimeFormatOptions = {
@@ -26,13 +27,26 @@ export function JobStep({ step }: { step: LifeStep }) {
   };
 
   const stepStylePrefix = useMemo(
-    () => step.name.toLowerCase().replaceAll(" ", "_"),
-    [step.name]
+    () => step.name.toLowerCase().replaceAll(" ", "_").replaceAll("ó", "o"),
+    [step.name],
   );
 
   return (
     <Card
-      className={style[`card-background--${stepStylePrefix}`]}
+      sx={{
+        backgroundColor:
+          stepStylePrefix === "cruncho"
+            ? "rgba(236, 75, 68, 0.2)"
+            : stepStylePrefix === "reputacion_digital"
+              ? "rgba(16, 89, 118, 0.2)"
+              : stepStylePrefix === "qbit"
+                ? "rgba(15, 128, 185, 0.2)"
+                : stepStylePrefix === "solo_projects"
+                  ? "rgba(255, 232, 31, 0.2)"
+                  : stepStylePrefix === "tracab"
+                    ? "rgba(92, 172, 113, 0.2)"
+                    : "rgba(255, 255, 255, 0.1)",
+      }}
       elevation={0}
     >
       <CardHeader
@@ -55,7 +69,21 @@ export function JobStep({ step }: { step: LifeStep }) {
               }}
             />
           ) : (
-            <Avatar className={style[`avatar--${stepStylePrefix}`]}>
+            <Avatar
+              className={`${
+                stepStylePrefix === "cruncho"
+                  ? "bg-cruncho"
+                  : stepStylePrefix === "reputacion_digital"
+                    ? "bg-reputacion-digital"
+                    : stepStylePrefix === "qbit"
+                      ? "bg-qbit"
+                      : stepStylePrefix === "solo_projects"
+                        ? "bg-solo-projects"
+                        : stepStylePrefix === "tracab"
+                          ? "bg-tracab"
+                          : ""
+              }`}
+            >
               {step.name
                 .split(" ")
                 .map((splitted) => splitted[0].toUpperCase())
@@ -71,7 +99,7 @@ export function JobStep({ step }: { step: LifeStep }) {
         />
         <Grid container spacing={4}>
           {step.projects.map((s, index) => (
-            <Grid item xs={12} sm={6} key={index}>
+            <Grid size={{ xs: 12, sm: 6 }} key={index}>
               <StepProject project={s} />
             </Grid>
           ))}

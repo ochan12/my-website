@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Grid } from "@mui/material";
 import { LifeStep } from "interfaces";
-import style from "./JobStep.module.scss";
+
 
 export function HeaderStep({
   step,
@@ -13,17 +13,23 @@ export function HeaderStep({
   isActiveIndex: boolean;
   onClick: () => void;
 }) {
+  const stepStylePrefix = step.name.toLowerCase().replaceAll(" ", "_").replaceAll("ó", "o");
   return (
     <Grid
       container
       textAlign={"center"}
       className={`${
-        style[`headerStepper--${step.name.toLowerCase().replaceAll(" ", "_")}`]
+        stepStylePrefix === 'cruncho' ? 'bg-cruncho/20 cursor-pointer rounded-lg border border-transparent hover:border-cruncho/50' :
+        stepStylePrefix === 'reputacion_digital' ? 'bg-reputacion-digital/20 cursor-pointer rounded-lg border border-transparent hover:border-reputacion-digital/50' :
+        stepStylePrefix === 'qbit' ? 'bg-qbit/20 cursor-pointer rounded-lg border border-transparent hover:border-qbit/50' :
+        stepStylePrefix === 'solo_projects' ? 'bg-solo-projects/20 cursor-pointer rounded-lg border border-transparent hover:border-solo-projects/50' :
+        stepStylePrefix === 'tracab' ? 'bg-tracab/20 cursor-pointer rounded-lg border border-transparent hover:border-tracab/50' :
+        'cursor-pointer rounded-lg border border-transparent'
       } p-2`}
       onClick={onClick}
       alignItems="center"
     >
-      <Grid item xs={12} justifyContent="center" textAlign={"center"}>
+      <Grid size={{ xs: 12 }} justifyContent="center" textAlign={"center"}>
         {step.photos?.[0] ? (
           <img
             src={step.photos?.[0]}
@@ -40,9 +46,13 @@ export function HeaderStep({
             sx={{
               margin: "auto",
             }}
-            className={
-              style[`avatar--${step.name.toLowerCase().replaceAll(" ", "_")}`]
-            }
+            className={`${
+              stepStylePrefix === 'cruncho' ? 'bg-cruncho' :
+              stepStylePrefix === 'reputacion_digital' ? 'bg-reputacion-digital' :
+              stepStylePrefix === 'qbit' ? 'bg-qbit' :
+              stepStylePrefix === 'solo_projects' ? 'bg-solo-projects' :
+              stepStylePrefix === 'tracab' ? 'bg-tracab' : ''
+            }`}
           >
             {step.name
               .split(" ")
@@ -51,7 +61,7 @@ export function HeaderStep({
           </Avatar>
         )}
       </Grid>
-      {/* <Grid item xs={12}>
+      {/* <Grid size={{ xs: 12}}>
         <Typography variant="caption">{step.name}</Typography>
       </Grid> */}
     </Grid>

@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  CircularProgress,
-  Grid
-} from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 import Layout from "components/layout/Layout";
 import { HeaderStep } from "components/steps/HeaderStep";
 import { JobStep } from "components/steps/JobStep";
@@ -25,7 +22,7 @@ export default function Jobs() {
   const [activeJobIndex, setActiveJob] = useState(3);
   const [swiper, setSwiper] = useState<SwiperBase | null>(null);
   const slideTo = (index: number) => swiper?.slideTo(index);
-  const {theme} = useContext(ColorModeContext)
+  const { theme } = useContext(ColorModeContext);
   const filteredHobbySteps = useMemo(
     () =>
       hobbySteps.steps
@@ -37,7 +34,7 @@ export default function Jobs() {
             return [`${name}_${theme}`, extension].join(".");
           }),
         })),
-    [hobbySteps.steps, theme]
+    [hobbySteps.steps, theme],
   );
   return (
     <Layout>
@@ -51,14 +48,14 @@ export default function Jobs() {
         className="whitespace-nowrap"
       >
         {isLoading ? (
-          <Grid item>
+          <Grid size={{ xs: 12 }} justifyContent="center">
             <CircularProgress />
           </Grid>
         ) : (
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <Grid container justifyContent="center" className="p-2" spacing={2}>
               {[...steps, ...filteredHobbySteps].map((step, index) => (
-                <Grid item xs={2} key={index}>
+                <Grid size={{ xs: 2 }} key={index}>
                   <HeaderStep
                     step={step}
                     currentStepIndex={activeJobIndex}
@@ -71,7 +68,7 @@ export default function Jobs() {
                 </Grid>
               ))}
             </Grid>
-            <Grid item xs={12} className="mt-4 p-4" justifyContent="right">
+            <Grid size={{ xs: 12 }} className="mt-4 p-4" justifyContent="right">
               <Swiper
                 spaceBetween={10}
                 initialSlide={activeJobIndex}

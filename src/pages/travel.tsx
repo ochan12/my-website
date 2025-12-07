@@ -33,7 +33,7 @@ export default function Travel() {
         alignItems="center"
         height={"80vh"}
       >
-        <Grid item xs={10} md={10} height={"80vh"}>
+        <Grid size={{ xs: 10, md: 10 }} height={"80vh"}>
           <Map />
         </Grid>
       </Grid>

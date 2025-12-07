@@ -30,14 +30,14 @@ function ProfileLinks() {
   const { contact, isLoading } = useContactInformation();
   return isLoading ? (
     <Grid container justifyContent={"center"}>
-      <Grid item xs={6}>
+      <Grid size={{ xs: 6 }}>
         <Skeleton />
       </Grid>
     </Grid>
   ) : (
     <Grid container justifyContent={"center"}>
       {contact?.repository && (
-        <Grid item>
+        <Grid>
           <ProfileButtons
             link={contact.repository}
             content={<GitHub />}
@@ -46,7 +46,7 @@ function ProfileLinks() {
         </Grid>
       )}
       {contact?.linkedIn && (
-        <Grid item>
+        <Grid>
           <ProfileButtons
             link={contact?.linkedIn}
             content={<LinkedIn />}
@@ -61,7 +61,7 @@ function ProfileLinks() {
 export function Profiles() {
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Typography
           variant="body1"
           className="text-lg text-opacity-50 max-w-lg text-center margin-auto"
@@ -69,7 +69,7 @@ export function Profiles() {
           You can see my profiles at:
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <ProfileLinks />
       </Grid>
     </Grid>

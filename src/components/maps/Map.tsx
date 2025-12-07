@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { GeoJSON, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import countriesData from "../../assets/countries.json";
+import "leaflet/dist/leaflet.css";
 
 export default function Map() {
   const { steps, isLoading } = useStepsByType(StepType.TRAVEL);
@@ -20,28 +21,28 @@ export default function Map() {
       isLoading
         ? []
         : Array.from(new Set(steps?.map((step) => step.place.countryCode))),
-    [steps, isLoading]
+    [steps, isLoading],
   );
 
   const geoDataFromCountries = useMemo(
     () =>
       (countriesData as GeoJSONType).features.filter((feature) =>
-        countries.includes(feature.properties.ISO_A3)
+        countries.includes(feature.properties.ISO_A3),
       ),
-    [countries]
+    [countries],
   );
   const rightNow = useMemo(
     () => steps?.find((step) => step.place.countryCode === "SWE"),
-    [steps]
+    [steps],
   );
   const colorMode = useTheme().palette.mode;
 
   const pathOptions: PathOptions = useMemo(
     () =>
       colorMode === "dark"
-        ? { color: DARK_PRIMARY_COLOR, stroke: false  }
+        ? { color: DARK_PRIMARY_COLOR, stroke: false }
         : { color: LIGHT_PRIMARY_COLOR, stroke: false },
-    [colorMode]
+    [colorMode],
   );
 
   useEffect(() => {

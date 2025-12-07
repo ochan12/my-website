@@ -16,12 +16,12 @@ export default function Hobbies() {
       </Head>
       <Grid
         container
-        alignItems={"center"}
-        spacing={2}
+        alignItems="stretch"
+        spacing={1}
         justifyContent="center"
         className="p-4"
       >
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }} className="flex">
           <HobbyCard
             title="Running"
             subtitle="Well, not as fast as BB-8"
@@ -29,7 +29,7 @@ export default function Hobbies() {
             alt="BB-8 running"
           />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }} className="flex">
           <HobbyCard
             title="Reading"
             subtitle="To learn, you must"
@@ -37,7 +37,7 @@ export default function Hobbies() {
             alt="Grogu on the letters"
           />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }} className="flex">
           <HobbyCard
             title="Movies"
             subtitle="These ideas had to come from somewhere"
@@ -45,7 +45,7 @@ export default function Hobbies() {
             alt="This ideas had to come from somewhere"
           />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }} className="flex">
           <HobbySwiperCard
             title="Mate"
             subtitle="Not a hobby, but I'll take it with me everywhere"

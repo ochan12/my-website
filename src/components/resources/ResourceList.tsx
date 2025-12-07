@@ -40,9 +40,18 @@ export default function ResourceList({
   if (isLoading) return <LinearProgress className="m-4" color="primary" />;
 
   return (
-    <Grid container spacing={2}>
+    <Grid
+      container
+      spacing={2}
+      justifyContent="center"
+      alignItems="center"
+      className="mb-2"
+    >
       {resources?.map((resource) => (
-        <Grid item key={resource.name}>
+        <Grid
+          key={resource.name}
+          className="flex items-center justify-center p-2"
+        >
           <a href={resource.url}>{ImageCompoment(resource)}</a>
         </Grid>
       ))}

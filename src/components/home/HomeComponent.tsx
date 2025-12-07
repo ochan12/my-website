@@ -26,7 +26,7 @@ function Introduction() {
   const homeLinks = useHomeLinks();
   return (
     <Grid container justifyContent={"center"}>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Typography
           variant="body1"
           className="text-lg text-opacity-50 max-w-lg text-center margin-auto"
@@ -36,21 +36,21 @@ function Introduction() {
             src={`/img/icons/${
               theme.palette.mode === "light" ? "obi_wan.svg" : "emperor.svg"
             }`}
+            className="inline-block align-middle"
             alt="Hello there..."
             title="Hello there..."
             width={20}
             height={20}
-          />{" "}
+          />
+          {"  "}
           I&apos;m Mateo and for some misterious reason (or maybe not) you ended
           up in my website. You might want to check out:
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid>
         <Grid container justifyContent={"center"}>
           {homeLinks.map((item, index) => (
-            <Grid item key={index}>
-              {LinkItemComponent(item)}
-            </Grid>
+            <Grid key={index}>{LinkItemComponent(item)}</Grid>
           ))}
         </Grid>
       </Grid>
@@ -61,7 +61,7 @@ function Introduction() {
 function Presentation() {
   return (
     <Grid container justifyContent={"center"}>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <Typography
           variant="body1"
           className="text-lg text-opacity-50 max-w-lg text-center margin-auto"
@@ -71,7 +71,7 @@ function Presentation() {
           also create some mobile apps just for fun.
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid>
         <Profiles />
       </Grid>
     </Grid>
@@ -86,28 +86,17 @@ export default function HomeComponent() {
       alignContent="center"
       spacing={4}
     >
-      <Grid item xs={12} className="text-center">
+      <Grid size={{ xs: 12 }} className="text-center">
         <Grid container justifyContent={"center"}>
-          <Grid item xs={12} className="text-center">
-            <Image
-              priority
-              src="/img/mateo_barcelona.jpeg"
-              className={"rounded-full"}
-              height={200}
-              width={200}
-              alt={"Mateo"}
-              objectFit={"cover"}
-            />
-          </Grid>
-          <Grid item xs={12} className="text-center">
+          <Grid size={{ xs: 12 }} className="text-center">
             <PersonalData />
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} md={5} className="text-center">
+      <Grid size={{ xs: 12, md: 4 }} className="text-center">
         <Introduction />
       </Grid>
-      <Grid item xs={12} md={5} className="text-center">
+      <Grid size={{ xs: 12, md: 4 }} className="text-center">
         <Presentation />
       </Grid>
     </Grid>

@@ -9,7 +9,6 @@ import {
 import { ColorModeContext } from "components/theme/ThemeWrapper";
 import { useContext } from "react";
 import { getIconImage } from "./Drawer";
-import style from "./Drawer.module.scss";
 
 export function DrawerHeader() {
   const theme = useTheme();
@@ -19,10 +18,11 @@ export function DrawerHeader() {
     <Grid
       container
       alignItems="center"
-      justifyContent={"center"}
-      className="m-0 p-2 text-ellipsis"
+      justifyContent={"space-around"}
+      spacing={1}
+      className="m-4 text-ellipsis"
     >
-      <Grid item xs={12} textAlign="center">
+      <Grid size={{ xs: 12 }} textAlign="center">
         <ToggleButtonGroup
           value={colorMode.theme}
           exclusive
@@ -38,8 +38,11 @@ export function DrawerHeader() {
           </ToggleButton>
         </ToggleButtonGroup>
       </Grid>
-      <Grid item xs={12} textAlign="center">
-        <code role="HeaderName" className={style.starWarsGlyph}>
+      <Grid size={{ xs: 12 }} textAlign="center">
+        <code
+          role="HeaderName"
+          className="align-middle font-star-wars hover:font-sans transition-all duration-300"
+        >
           {upToMedium ? "< Mateo />" : "< M />"}
         </code>
       </Grid>

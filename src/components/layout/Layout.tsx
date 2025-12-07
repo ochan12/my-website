@@ -16,12 +16,11 @@ export default function Layout({ children, home }: any) {
       }}
     >
       <Grid container justifyContent={"space-between"}>
-        <Grid item xs={2}>
+        <Grid size={{ xs: 2 }}>
           <AppDrawer />
         </Grid>
         <Grid
-          item
-          xs={10}
+          size={{ xs: 10 }}
           marginTop={10}
           sx={{
             minHeight: "100vh",

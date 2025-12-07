@@ -55,35 +55,35 @@ export default function Skills() {
         </title>
       </Head>
       <Grid container spacing={2} padding={2}>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }}>
           <SkillCard
             skills={backendSkills}
             resourcesMap={resourcesMap}
             title="Backend"
           />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }}>
           <SkillCard
             skills={frontendSkills}
             resourcesMap={resourcesMap}
             title="Frontend"
           />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }}>
           <SkillCard
             skills={dbSkills}
             resourcesMap={resourcesMap}
             title="Search"
           />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }}>
           <SkillCard
             skills={otherSkills}
             resourcesMap={resourcesMap}
             title="Tools"
           />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid size={{ md: 4, xs: 12 }}>
           <SkillCard
             skills={serviceSkills}
             resourcesMap={resourcesMap}
